@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Trim Size : 11in x 8.5in
+%% Text Area : 9.6in (include Runningheads) x 7in
+%% ws-jai.tex, 26 April 2012
+%% Tex file to use with ws-jai.cls written in Latex2E.
+%% The content, structure, format and layout of this style file is the
+%% property of World Scientific Publishing Co. Pte. Ltd.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+
+%\documentclass[draft]{ws-jai}
+\documentclass{ws-jai}
+\usepackage[flushleft]{threeparttable}
+\begin{document}
+
+\catchline{}{}{}{}{} % Publisher's Area please ignore
+
+\markboth{Jack Hickish, CASPER gang, etc.}{The Collaboration for Astronomy Signal Processing and Electronics Research in 2016.}
+
+\title{The Collaboration for Astronomy Signal Processing and Electronics Research in 2016}
+
+%\author{First Author$^\dagger$, Second Author$^\ddagger$, Third Author$^\ddagger$ and Fourth Author$^\S$}
+\author{Jack Hickish$^\dagger$, Others$^\ddagger$}
+
+\address{
+$^\dagger$Radio Astronomy Laboratory, UC Berkeley, Berkeley, CA 94720, USA, jackh@astro.berkeley.edu\\
+$^\ddagger$Group, Company, Address, City, State ZIP/Zone, Country\\
+$^\S$Group, Company, Address, City, State ZIP/Zone, Country, fauthor@company.com
+}
+
+\maketitle
+
+\corres{$^\dagger$Jack Hickish}
+
+\begin{history}
+\received{(to be inserted by publisher)};
+\revised{(to be inserted by publisher)};
+\accepted{(to be inserted by publisher)};
+\end{history}
+
+\begin{abstract}
+
+The Collaboration for Astronomy Signal Processing and Electronics Research
+(CASPER) has been working for a decade to reduce the time and cost of designing,
+building and deploying new digital radio astronomy instruments.  Today,
+CASPER-designed hardware powers some ?? scientific instruments worldwide, and
+are used by scientists and engineers at ?? academic institutions.  In this paper
+we summarize the current offerings of the CASPER collaboration, focussing on
+currently-available and next-generation hardware.  We describe the ongoing state
+of software development, as CASPER looks to support an ever-increasing selection
+of off-the-shelf digital signal processing platforms.
+
+\end{abstract}
+
+\keywords{CASPER, digital signal processing, radio astronomy, instrumentation}
+
+
+\section{Introduction}
+
+Since the first digital instrument used in radio astronomy \citep{Weinreb} we
+have seen a growing adoption of digital processing hardware as the foundation on
+which radio telescopes are built.  Today, CPUs, GPUs, FPGAs and ASICs power
+almost all of the world's radio telescopes, and our ability to do science has
+become inextricably linked with our ability to perform digital computation.
+With the capability of digital processing hardware scaling exponentially with
+Moore's law, the ability to leverage current technology by reducing the
+design-time of new instruments is critical in effective deployments of new radio
+astronomy instruments.
+
+The Collaboration for Astronomy Signal Processing and Electronics Research
+(CASPER) puts \emph{time-to-science}, the time between conception of an
+instrument and its deployment, as a central figure of merit in instrument
+design. CASPER works to minimize time-to-science by working to develop and
+support open-source, general-purpose hardware, software libraries and
+programming tools which allow rapid instrument design, and straightforward
+upgrade cycles.
+
+With CASPER hardware and software now powering some ?? radio astronomy
+instruments worldwide (see Table~\ref{table:casper-instruments}) including some
+of the largest, most advanced telescopes ever built, such as the upcoming
+MeerKat Array \citep{MeerKAT}, it is appropriate to document the state of the
+Collaboration.
+
+In this paper, we first summarize the design philosophy of CASPER in
+Section~\ref{sec:CASPER-philosophy}.  In Section~\ref{sec:Hardware} we describe
+currently available CASPER hardware offerings, including the range of digitizers
+developed and supported by CASPER. Key to CASPER's success are the firmware
+libraries and programming infrastructure provided by the collaboration, which we
+overview in Section~\ref{sec:Software}.  In Section~\ref{sec:Deployments} we
+document the extensive and wide-ranging applications to which CASPER hardware
+and design-tools have been applied. Finally, we describe the future direction of
+and challenges faced by the CASPER collaboration in Section~\ref{sec:Future},
+with concluding remarks in Section~\ref{sec:Conclusions}.
+
+\section{The CASPER Philosophy} \label{sec:CASPER-philosophy}
+
+\subsection{Computing by the yard}
+
+\subsection{Ethernet}
+
+\subsubsection{Multicast \& Commensal Instruments}
+
+
+\section{CASPER Hardware} \label{sec:Hardware}
+
+\subsection{FPGA platforms}
+
+\subsection{ADCs \& DACs}
+
+
+\section{CASPER Software \& Programming Tools} \label{sec:Software}
+
+\subsection{The CASPER Toolflow} 
+
+\subsection{CASPER Libraries}
+
+\subsection{JASPER Toolflow}
+
+\emph{Just Another Signal Processing EnviRonment}
+
+
+\section{CASPER Deployments} \label{sec:Deployments}
+
+
+\section{Future Directions \& Challenges} \label{sec:Future}
+
+\subsection{Support of off-the-shelf hardware}
+
+\subsection{CPU/GPU programming/data-transport}
+
+\subsection{Design re-use}
+
+\subsection{Observatory Integration}
+
+
+\section{Conclusions} \label{sec:Conclusions}
+
+
+\bibliographystyle{ws-jai} \bibliography{casper-2016}
+
+\end{document} 
