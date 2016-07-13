@@ -1,0 +1,33 @@
+\begin{thebibliography}{5}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{Isaacson(2016)}]{Isaac16}
+Isaacson, A. [2016]  \enquote{{One-Click Tool Flow},} Report 1, SKA-SA, Cape
+  Town, South Africa.
+
+\bibitem[{Teague(2015{\natexlab{a}})}]{Teag15}
+Teague, G. [2015{\natexlab{a}}]  \enquote{{SKARAB Motherboard},} Hardware
+  Description Document HDD-123702, Peralex, Cape Town, South Africa.
+
+\bibitem[{Teague(2015{\natexlab{b}})}]{Teagu15}
+Teague, G. [2015{\natexlab{b}}]  \enquote{{SKARAB Motherboard},} Firmware User
+  Manual FUM-123702, Peralex, Cape Town, South Africa.
+
+\bibitem[{van Balla \emph{et~al.}(2016)van Balla, Siemion, Manley, New \&
+  Wagner}]{Balla16}
+van Balla, T., Siemion, A., Manley, J., New, W. \& Wagner, M. [2016]
+  \enquote{Introduction to simulink roach2,}
+  \url{https://casper.berkeley.edu/wiki/Introduction_to_Simulink_ROACH2}.
+
+\bibitem[{van Dyk(2016)}]{cliff16}
+van Dyk, C. [2016]  \enquote{{SKARAB Hello World},} Peralex, Cape Town, South
+  Africa.
+
+\end{thebibliography}
