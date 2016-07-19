@@ -11,6 +11,7 @@
 %\documentclass[draft]{ws-jai}
 \documentclass{ws-jai}
 \usepackage[flushleft]{threeparttable}
+\usepackage{pdflscape}
 \begin{document}
 
 \catchline{}{}{}{}{} % Publisher's Area please ignore
@@ -142,6 +143,49 @@ with concluding remarks in Section~\ref{sec:Conclusions}.
 
 
 \section{CASPER Deployments} \label{sec:Deployments}
+
+\newcommand{\rr}{\raggedright}
+\newcommand{\tn}{\tabularnewline}
+\newcommand{\ac}{\centering}
+\begin{landscape}
+\begin{table}
+  \centering
+  %\begin{tabular}{p{3cm} c p{4cm} p{4cm} p{4cm} p{2cm}}
+  \begin{tabular}{p{3cm} c p{4cm} p{8cm} p{2cm}}
+  %\ac Instrument & \ac Year & \ac Hardware & \ac Description & \ac CASPER Functionality & \ac References \tn
+  \ac Instrument & \ac Year & \ac Hardware & \ac Description & \ac References \tn
+  \hline
+  %Academic Radio Interferometer (ARI) & 2012 & \rr 1xROACH1 1xADC2x1000-8 & \ac 21-cm dual-antenna interferometer for teaching purposes & \rr digitization, delay compensation, correlation & see email from Pedro Salas \\
+  %pocketcorr & 2014 & \rr ROACH1 / ROACH2 / SNAP & \ac Multi-platform single-board correlator. & \rr digitization, channelisation, correlation & \footnote{\url{https://github.com/domagalski/pocketcorr}} \\
+  %Leuschner Spectrometer & 2015 & \rr ROACH1, iADC  & \ac dual-polarization, 12 MHz, 8192 channel spectrometer. & \rr digitization, channelisation, power detection & \footnote{\url{http://w.astro.berkeley.edu/~domagalski/leuschner-radio/}} \\
+  %BLAST-TNG & 2017 & \rr 5xROACH2, 5xMUSIC-DAC/ADC  & \ac 2.5~m Balloon-Borne Submillimeter Polarimeter & \rr MKID readout & \cite{galitzki2014balloon} \\
+  %DSN Transient Observatory & 2016 & \rr 2xROACH1, 2xKATADC  & \ac Versatile signal processor for commensal astronomy during DSN data downlinks & \rr Kurtosis Spectrometer, pulse detection & Kuiper et al (in prep) \\
+  %MeerKAT & Under Construction & \rr ROACH2 (SKARAB upgrade forthcoming)  & \ac "Facility Instrument" capable of producing various data products over 856~MHz bandwidth & \rr 32k channel, 64 dual-pol antenna correlator. Beamformer. Transient buffer. & MeerKAT CBF Requirement Spec (private) \\
+  %KAT7 & 2010 & \rr 16xROACH1  & \ac 7 dual-pol antenna full-stokes correlator & \rr channelization. correlation & \cite{Foley01082016}, Manley thesis \\
+  %RATTY & 2012 & \rr 1xROACH1  & \ac Transient / RFI Monitor for SKA-SA site monitoring& \rr  & \cite{Foley01082016}, Manley thesis \\
+  Academic Radio Interferometer (ARI) & 2012 & \rr 1xROACH1 1xADC2x1000-8 & \ac 21-cm dual-antenna interferometer for teaching purposes & see email from Pedro Salas \\
+  pocketcorr & 2014 & \rr ROACH1 / ROACH2 / SNAP & \ac Multi-platform single-board FX correlator. Used in HYPERION deployment and PAPER testing & \footnote{\url{https://github.com/domagalski/pocketcorr}} \\
+  Leuschner Spectrometer & 2015 & \rr ROACH1, iADC  & \ac dual-polarization, 12 MHz, 8192 channel spectrometer for UC Berkeley's Leuschner Radio Observatory & \footnote{\url{http://w.astro.berkeley.edu/~domagalski/leuschner-radio/}} \\
+  BLAST-TNG & 2017 & \rr 5xROACH2, 5xMUSIC-DAC/ADC  & \ac 2.5~m Balloon-Borne Submillimeter Polarimeter with CASPER MKID readout system & \cite{galitzki2014balloon} \\
+  DSN Transient Observatory & 2016 & \rr 2xROACH1, 2xKATADC  & \ac Versatile signal processor for commensal astronomy during DSN data downlinks, featuring Kurtosis Spectrometer and pulse detection & Kuiper et al (in prep) \\
+  MeerKAT & Under Construction & \rr ROACH2 (SKARAB upgrade forthcoming)  & \ac "Facility Instrument" capable of producing various data products over 856~MHz bandwidth. Modes include 32k channel, 64 dual-pol antenna correlator, beamformer, transient buffer. & MeerKAT CBF Requirement Spec (private) \\
+  KAT7 & 2010 & \rr 16xROACH1  & \ac 7 dual-pol antenna full-stokes FX correlator & \cite{Foley01082016}, Manley thesis \\
+  RATTY & 2012 & \rr 1xROACH1  & \ac Transient / RFI Monitor for SKA-SA site monitoring. & \cite{Foley01082016}, Manley thesis \\
+  HOLMES & Deployment 2018 & \rr 35xROACH2, MUSIC-ADC/DAC & \ac Electron Neutrino Mass measurement with CASPER-based microwave SQUID readout system. &  \cite{Alpert2015, Ferri2016179} \\
+  GAVRT & 2009-2012 & \rr 8xiBOB, 16xiADC, BEE2 & \ac 8~GHz instantaneous bandwidth transient capture buffer with real-time incoherend dedispersion trigger.  & \cite{jon10, doi:10.1117/12.856642} \\
+  cycSpec & 2012 & \rr ROACH1/ADC83000 (Arecibo), ROACH2/ADC5G (GBT) & \ac Real-time cyclic spectrometer, deployed at Arecibo and GBT on consecutive generations of hardware. 128~MHz bandwidth CASPER-based overlapping filterbank used to feed GPU processors.  & Jones et al (in prep) \\
+  Columbia MKID readout & 2012 & \rr initially ROACH1, upgraded to ROACH2 & \ac MKID readout system with CASPER-based tone generation, digitization and coarse channelization. Feeds non-CASPER HPC processors. & \cite{mccarrick_2014} \\
+  GRASP & 2016 & \rr 1xROACH1, 1xQUAD ADC & \ac 100 MHz bandwidth full-stokes spectrometer for the Gauribidnaur Radio Solar spectro-Polarimter. & Indrajit \\
+  AMiBA Correlator Upgrade & 2016 & \rr 8xROACH2, 14xADC5G & \ac 7 dual-pol antenna 4.48~GHz bandwidth FX correlator & Homin \\
+  ALMA Phased Array & 2014 & \rr 8xROACH2 & \ac Time-tagging, ethernet packetization and VDIF (VLBI) formatting & \cite{2012evn..confE..53A} \\
+  AMI Correlator Upgrade & 2015 & 18xROACH2, 36xADC5G & 5~GHz, 4096 channel FX Correlator for the Arcminute Microkelvin Imager arrays. & \cite{Zwart21122008}, Hickish et al. (in prep) \\ 
+  SWARM Correlator & & & & \\
+  Medicina FFTT & 2014 & 3xROACH1, 1xADC64 & A multi-board digitization, channelisation, beamforming correlation system, used to demonstrate direct-imaging on the BEST-2 Array & \cite{Foster11042014} \\
+  HIPSR & 2014 & 13xROACH1, 13xiADC & 400~MHz bandwidth 8192 channel spectrometer and high time-resolution system for the Parkes multibeam receiver & \footnote{\url{http://telegraphic.github.io/hipsr/overview.html}} \\
+  MITEoR & 2014 & 4xROACH2 4xADC64 & 50~MHz bandwidth, 128 dual-polarization antenna FX correlator, used to investigate spatial-FFT correlation methods & \cite{2014MNRAS.445.1084Z} \\
+  \end{tabular}
+\end{table}
+\end{landscape}
 
 \subsection{MeerKAT}
 
