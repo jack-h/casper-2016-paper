@@ -1,0 +1,56 @@
+\begin{thebibliography}{9}
+\newcommand{\enquote}[1]{``#1''}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem[{CASPER(2009)}]{Casp09}
+CASPER [2009]  \enquote{Roach,} \url{https://casper.berkeley.edu/wiki/ROACH}.
+
+\bibitem[{CASPER(2012)}]{Casp12}
+CASPER [2012]  \enquote{Roach-2 revision 2,}
+  \url{https://casper.berkeley.edu/wiki/ROACH-2_Revision_2}.
+
+\bibitem[{Hickish \emph{et~al.}(2016)Hickish, New, Isaacson, MacMahon, van~der
+  Schuur \& van Tonder}]{Isaac16}
+Hickish, J., New, W., Isaacson, A., MacMahon, D., van~der Schuur, D. \& van
+  Tonder, V. [2016]  \enquote{{One-Click Tool Flow},} Report 1, SKA-SA, Cape
+  Town, South Africa.
+
+\bibitem[{Manley(2014)}]{man14}
+Manley, J. [2014]  \enquote{{A Scalable Packetised Radio Astronomy Imager},}
+  PhD thesis, University of Cape Town, Cape Town, South Africa.
+
+\bibitem[{Parsons \emph{et~al.}(2005)Parsons, Backer, Chang, Chapman, Chen,
+  Droz, de~Jesus, MacMahon, Siemion, Wawrzynek, Werthimer \& Wright}]{pars05}
+Parsons, A., Backer, D., Chang, C., Chapman, D., Chen, H., Droz, P., de~Jesus,
+  C., MacMahon, D., Siemion, A., Wawrzynek, J., Werthimer, D. \& Wright, M.
+  [2005]  \enquote{{A New Approach to Radio Astronomy Signal Processing: Packet
+  Switched, FPGA-based, Upgradeable, Modular Hardware and reusable,
+  Platform-Independent Signal Processing Libraries},}  \emph{Proceedings of the
+  28th General Assembly of the International Union of Radio Science} (Boulder,
+  Colorado), p. 18.
+
+\bibitem[{Teague(2015{\natexlab{a}})}]{Teag15}
+Teague, G. [2015{\natexlab{a}}]  \enquote{{SKARAB Motherboard},} Hardware
+  Description Document HDD-123702, Peralex, Cape Town, South Africa.
+
+\bibitem[{Teague(2015{\natexlab{b}})}]{Teagu15}
+Teague, G. [2015{\natexlab{b}}]  \enquote{{SKARAB Motherboard},} Firmware User
+  Manual FUM-123702, Peralex, Cape Town, South Africa.
+
+\bibitem[{van Balla \emph{et~al.}(2016)van Balla, Siemion, Manley, New \&
+  Wagner}]{Balla16}
+van Balla, T., Siemion, A., Manley, J., New, W. \& Wagner, M. [2016]
+  \enquote{Introduction to simulink roach2,}
+  \url{https://casper.berkeley.edu/wiki/Introduction_to_Simulink_ROACH2}.
+
+\bibitem[{van Dyk(2016)}]{cliff16}
+van Dyk, C. [2016]  \enquote{{SKARAB Hello World},} Peralex, Cape Town, South
+  Africa.
+
+\end{thebibliography}
