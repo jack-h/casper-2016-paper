@@ -11,6 +11,8 @@
 %\documentclass[draft]{ws-jai}
 \documentclass{ws-jai}
 \usepackage[flushleft]{threeparttable}
+\usepackage{tabulary}
+
 \begin{document}
 
 \catchline{}{}{}{}{} % Publisher's Area please ignore
@@ -146,6 +148,94 @@ with concluding remarks in Section~\ref{sec:Conclusions}.
 \subsection{MeerKAT}
 
 %% Ask Ruby van Rooyen
+
+\begin{table}
+\begin{center}
+\begin{tabulary}{0.8\textwidth}{LLLLL}
+\hline \hline
+\textbf{Instrument}    &  \textbf{Description}   &  \textbf{Hardware}      & \textbf{Functions} & \textbf{Date}   \\
+
+\hline
+VEGAS (VErsatile GBT Astronomical Spectrometer)                &  
+Spectrometer for the Green Bank Telescope, with 10GHz BW 
+(one dual-pol input) or 1.25GHz BW (eight dual-pol inputs).  
+Wideband modes and narrowband modes (eight digitally tunes 
+sub-bands within the 1.25GHz BW).                              & 
+Eight ROACH2 boards, 16 ADC5G boards, 16 SFP+ mezzanine boards & 
+digitization \& channelization in wideband modes.  
+Digitization and sub-banding in narrow band modes.             &
+2016                                                           \\ 
+
+\hline 
+Green Bank Transient Spectrometer                              &
+Spectrometer for the Green Bank 20m antenna, 
+with 500MHz BW (one dual-pol input), and 2048 channels         &
+One ROACH1 board, two ADC083000 boards                         &
+Digitization \& channelization                                 &
+2014                                                           \\
+
+\hline 
+FLAG (Focal L-band Array for the GBT) Beamformer               &
+19 element phased array feed system, 150 MHz instantanious bw  & 
+5 ROACH2-R2 boards, 5 SFP+ mezzanine boards                    & 
+Channelization \& digital sideband separation                  &
+2016                                                           \\
+
+\hline 
+SkyNet Spectrometer                                            &
+Spectrometer for the 20 m telescope                            & 
+ROACH                                                          & 
+Channelization                                                 &
+20xx                                                           \\
+
+\hline 
+GB receiver Lab Spectrometer                                   &
+nnn                                                            & 
+ROACH                                                          & 
+Channelization                                                 &
+20xx                                                           \\
+
+\hline 
+GUPPI                                                          &
+nnn                                                            & 
+n                                                              & 
+nn                                                             &
+20xx                                                           \\
+
+\hline 
+WUPPI                                                          &
+nnn                                                            & 
+n                                                              & 
+nn                                                             &
+20xx                                                           \\
+
+\hline 
+PUPPI                                                          &
+nnn                                                            & 
+n                                                              & 
+nn                                                             &
+20xx                                                           \\
+
+\hline 
+DIBAS                                                          &
+nnn                                                            & 
+n                                                              & 
+nn                                                             &
+20xx                                                           \\
+
+\hline 
+FAST VLBE                                                      &
+nnn                                                            & 
+n                                                              & 
+nn                                                             &
+20xx                                                           \\
+
+\hline \hline
+\end{tabulary}
+\caption{CASPER deployments}
+\end{center}
+\end{table}
+
 
 \section{Future Directions \& Challenges} \label{sec:Future}
 
