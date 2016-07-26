@@ -12,6 +12,7 @@
 \documentclass{ws-jai}
 \usepackage[flushleft]{threeparttable}
 \usepackage{pdflscape}
+\usepackage{longtable} 
 \def\btex{B{\sc IB}\TeX\ }
 \begin{document}
 
@@ -79,7 +80,7 @@ upgrade cycles.
 With CASPER hardware and software now powering some ?? radio astronomy
 instruments worldwide (see Table~\ref{table:casper-instruments}) including some
 of the largest, most advanced telescopes ever built, such as the upcoming
-MeerKat Array \citep{MeerKAT}, it is appropriate to document the state of the
+MeerKat Array\footnote{\url{http://public.ska.ac.za/meerkat/meerkat-schedule}}, it is appropriate to document the state of the
 Collaboration.
 
 In this paper, we first summarize the design philosophy of CASPER in
@@ -219,10 +220,11 @@ The current release of the JASPER tool flow actually includes the castro python 
 \newcommand{\tn}{\tabularnewline}
 \newcommand{\ac}{\centering}
 \begin{landscape}
-\begin{table}
+%\begin{tabularx}
   \centering
   %\begin{tabular}{p{3cm} c p{4cm} p{4cm} p{4cm} p{2cm}}
-  \begin{tabular}{p{3cm} c p{4cm} p{8cm} p{2cm}}
+  \begin{longtable}{p{3cm} c p{4cm} p{8cm} p{2cm}}
+  \label{table:casper-instruments}
   %\ac Instrument & \ac Year & \ac Hardware & \ac Description & \ac CASPER Functionality & \ac References \tn
   \ac Instrument & \ac Year & \ac Hardware & \ac Description & \ac References \tn
   \hline
@@ -243,7 +245,7 @@ The current release of the JASPER tool flow actually includes the castro python 
   KAT7 & 2010 & \rr 16xROACH1  & \ac 7 dual-pol antenna full-stokes FX correlator & \cite{Foley01082016}, Manley thesis \\
   RATTY & 2012 & \rr 1xROACH1  & \ac Transient / RFI Monitor for SKA-SA site monitoring. & \cite{Foley01082016}, Manley thesis \\
   HOLMES & Deployment 2018 & \rr 35xROACH2, MUSIC-ADC/DAC & \ac Electron Neutrino Mass measurement with CASPER-based microwave SQUID readout system. &  \cite{Alpert2015, Ferri2016179} \\
-  GAVRT & 2009-2012 & \rr 8xiBOB, 16xiADC, BEE2 & \ac 8~GHz instantaneous bandwidth transient capture buffer with real-time incoherend dedispersion trigger.  & \cite{jon10, doi:10.1117/12.856642} \\
+  GAVRT & 2009-2012 & \rr 8xiBOB, 16xiADC, BEE2 & \ac 8~GHz instantaneous bandwidth transient capture buffer with real-time incoherend dedispersion trigger.  & \cite{jon10, JonesDSS28} \\
   cycSpec & 2012 & \rr ROACH1/ADC83000 (Arecibo), ROACH2/ADC5G (GBT) & \ac Real-time cyclic spectrometer, deployed at Arecibo and GBT on consecutive generations of hardware. 128~MHz bandwidth CASPER-based overlapping filterbank used to feed GPU processors.  & Jones et al (in prep) \\
   Columbia MKID readout & 2012 & \rr initially ROACH1, upgraded to ROACH2 & \ac MKID readout system with CASPER-based tone generation, digitization and coarse channelization. Feeds non-CASPER HPC processors. & \cite{mccarrick_2014} \\
   GRASP & 2016 & \rr 1xROACH1, 1xQUAD ADC & \ac 100 MHz bandwidth full-stokes spectrometer for the Gauribidnaur Radio Solar spectro-Polarimter. & Indrajit \\
@@ -254,8 +256,8 @@ The current release of the JASPER tool flow actually includes the castro python 
   Medicina FFTT & 2014 & 3xROACH1, 1xADC64 & A multi-board digitization, channelisation, beamforming correlation system, used to demonstrate direct-imaging on the BEST-2 Array & \cite{Foster11042014} \\
   HIPSR & 2014 & 13xROACH1, 13xiADC & 400~MHz bandwidth 8192 channel spectrometer and high time-resolution system for the Parkes multibeam receiver & \footnote{\url{http://telegraphic.github.io/hipsr/overview.html}} \\
   MITEoR & 2014 & 4xROACH2 4xADC64 & 50~MHz bandwidth, 128 dual-polarization antenna FX correlator, used to investigate spatial-FFT correlation methods & \cite{2014MNRAS.445.1084Z} \\
-  \end{tabular}
-\end{table}
+  \end{longtable}
+%\end{longtable}
 \end{landscape}
 
 \subsection{MeerKAT}
