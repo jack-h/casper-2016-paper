@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: casper-2016.aux
+The style file: ws-jai.bst
+Database file #1: casper-2016.bib
+Warning--entry type for "JonesDSS28" isn't style-file defined
+--line 356 of file casper-2016.bib
+Warning--entry type for "guppi" isn't style-file defined
+--line 506 of file casper-2016.bib
+<ws-jai.bst>
+World Scientific's Bibliography Style File for jai
+version 1.0 (2005/03/26), Sorted
+for support: Rajesh, rajesh@wspc.com.sg
+Reallocated wiz_functions (elt_size=4) to 6000 items from 140733193391032.
+Warning--empty year in gbtrans; set to ????
+You've used 29 entries,
+            3274 wiz_defined-function locations,
+            872 strings with 16560 characters,
+and the built_in function-call counts, 35290 in all, are:
+= -- 2094
+> -- 3474
+< -- 26
++ -- 1317
+- -- 1281
+* -- 3363
+:= -- 5714
+add.period$ -- 47
+call.type$ -- 29
+change.case$ -- 565
+chr.to.int$ -- 28
+cite$ -- 30
+duplicate$ -- 2015
+empty$ -- 1522
+format.name$ -- 1354
+if$ -- 6528
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 596
+newline$ -- 97
+num.names$ -- 116
+pop$ -- 1217
+preamble$ -- 1
+purify$ -- 541
+quote$ -- 0
+skip$ -- 614
+stack$ -- 0
+substring$ -- 567
+swap$ -- 1430
+text.length$ -- 15
+text.prefix$ -- 0
+top$ -- 4
+type$ -- 261
+warning$ -- 1
+while$ -- 109
+width$ -- 0
+write$ -- 331
+(There were 3 warnings)
