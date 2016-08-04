@@ -174,6 +174,22 @@ SKA-SA will be integrating 300 SKARAB units, as part of the MeerKAT upgrades, an
 
 \subsection{ADCs \& DACs}
 
+% NOTE: I just took the list from the website, are there others, are these all legit? (Griffin)
+\begin{tabular}{lccccc}
+Name & Type & Bits & Sample Rate & Inputs/Outputs & Interface \\
+\hline
+ADC2x1000-8 (iADC) & ADC & 8 & 1 GSPS & 2 & Z-DOK \\
+ADC1x3000-8 & ADC & 8 & 3 GSPS & 1 & Z-DOK \\
+ADC64x64-12 & ADC & 12 & 64 MSPS & 64 & Z-DOK x2 \\
+ADC4x250-8 (QuADC) & ADC & 8 & 250 MSPS & 4 & Z-DOK \\
+ADC2x550-12 & ADC & 12 & 550 MSPS & 2 & Z-DOK \\
+ADC2x400-14 & ADC & 14 & 400 MSPS & 2 & Z-DOK \\
+KatADC & ADC & 8 & 1.5 GSPS/3.0 GSPS & 2/1 & Z-DOK \\
+ADC1x5000-8 & ADC & 8 & 5 GSPS & 1 & Z-DOK \\
+ADC16x250-8 & ADC & 8 & 1 GSPS/500 MSPS/250 MSPS & 4/8/16 & Z-DOK \\
+ADC1x10000-4 & ADC & 4 & 10 GSPS & 1 & Z-DOK \\
+DAC2x1000-16 & DAC & 16 & 1 GSPS & 2 & Z-DOK \\
+\end{tabular}
 
 \section{CASPER Software \& Programming Tools} \label{sec:Software}
 
@@ -211,6 +227,98 @@ The current release of the JASPER tool flow actually includes the castro python 
 
 %% Andrew Martens + anyone else keen to contribute
 
+% NOTE: First draft of section, please feel free to edit (Griffin)
+% TODO: add CBASS-south, AVN Ghana, KuPol to instrument list
+
+In order to quickly and easily develop new radio astronomy instruments a number
+of DSP blocks have been developed for use in CASPER board firmware. Typical
+instruments such as spectrometers, beamformers, correlators, ADC recorders, and
+DAC signal generators are constructed from this library of DSP blocks.
+
+These blocks are based on the low-level logical units provided by the Xilinx
+Simulink library and the generic Simulink libraries. Configurable low-level DSP
+blocks are then used to build more complex, high-level DSP blocks. This
+heirarchical design style enables quick and uniform logic development through
+block reuse. High-level blocks include configuration parameters which are
+propagated through the low-level logic to update the underlying logic. Thus,
+generic blocks such as streaming FFTs and vector accumulators are included in
+the library, and configured when placed into a firmware design.
+
+Matlab Simulink provides a 2-D, heirarchical design and simulation environment
+useful for firmware design. Individual DSP blocks are placed into a model
+design, and connected via data lines. Once a firmware model has been laid out
+test vectors can be simulated through the system to verify the logic with a test
+bench.
+
+Xilinx provides the basic libraries to build firmware for their FPGAs. Basic
+blocks include logic gates, multipliers, adders, signal delays, FIFO buffers and
+block RAM (BRAM) interfaces. Blocks in the CASPER library are written using
+these basis blocks. Blocks can also be wrappers for HDL code, such as with the
+external interfaces. A number of specialized basic blocks have been written in
+the CASPER library for radio astronomy applications. For example, many low-bit
+complex multipliers are often used in correlation, to improve the resource
+efficiency a specialized 4-bit multiplier has been written. Also typical in
+firmware design is signal reorders and transposes, general blocks have been
+written to facilitate ease of BRAM memory use for these operations.
+Documentation on the CASPER library can be found
+online\footnote{https://casper.berkeley.edu/wiki/Block\_Documentation}.
+
+Using these basic logic and memory building blocks more complex DSP modules have
+been developed. At the core of many radio astronomy instruments is a fast Fourier
+Transform operation. A generic FFT module is implemented using a radix-2,
+biplex, decimation-in-time design. This module computes the Fourier Transform on
+a window of $2^N$ complex samples and is highly configurable. An efficient
+real-input FFT and a multi-input 'wideband' FFT module have been implemented
+using the generic FFT. In order reduce FFT sidelobe leakage due to the finite
+window size an FIR module has been implemented to work in unison with the FFT to
+create a poly-phase filterbank (PFB), see \S 4.2 of \citet{price13}.
+
+Working with signals in time and frequency domain often requires large data
+reorderings. A common operation is to perform a corner turn, i.e. a matrix
+transpose on a window of data. For small windows this is done in BRAM, but
+larger corner turns are done via external memory, such as the QDR, or with the
+network architecture. Blocks for more complex data reorders such as interleaving
+have also been implemented.
+
+Modules for the cross-correlation operation in an FX correlator have ben
+implemented in the library. A complex multiply and accumulate (CMAC) block for
+small correlators, usually on a single board for a small number of inputs, can
+be used in a matrix-style design. For large-N correlator systems distributed
+across multiple boards a streaming windowed x-engine can be used, see \S 3.2 and
+3.3 of \citet{hickish14}.
+
+A number of vector accumulators modules are in the library.
+Small vectors, such as those from a spectrometer, are implemented in BRAM. While
+large vectors, such as the cross-correlations of a correlator are implemented
+with QDR or DRAM memory. These accumulators include an interface to be accessed
+via software during runtime.
+
+Blocks for including dynamic delays in beamformer and correlator systems have
+been implemented. A configurable 'coarse' delay can be applied before the FFT
+operation, while a 'fine' delay can be applied post-FFT with a phase correction.
+These delays can be combined with a software interface to act as a fringe
+tracking module.
+
+Similarly to the fine delay module a gain equalizer module is implemented to
+dynamically update complex gain coefficients which are applied post-FFT. This is
+often used in unison with a 4-bit quantizer block to reduce the signal bitwidth
+before correlation.
+
+In addition to the generic DSP blocks a number of external interfaces known as
+'yellow blocks' have been designed to interface with external hardware such as
+ADCs, DACs, software interface registers, QDR  and DRAM memory, and network
+interfaces. Each yellow block has been developed for a specific external module.
+With in the Simulink environment a yellow block acts as a place holder for an
+external interface. During the synthesis toolflow the appropriate HDL for the
+external module is included into the design.
+
+The main collaboration library is hosted on
+github\footnote{github.com/casper-astro/mlib\_devel}, SKA South Africa
+is one of the main contributors to the library and similarly host their own
+version\footnote{github.com/ska-sa/mlib\_devel} on github. A number of
+other project and institutional forks exist, features from these repositories
+are regularly merged into the main library.
+
 \emph{Just Another Signal Processing EnviRonment}
 
 
@@ -242,6 +350,9 @@ The current release of the JASPER tool flow actually includes the castro python 
   BLAST-TNG & 2017 & \rr 5xROACH2, 5xMUSIC-DAC/ADC  & \ac 2.5~m Balloon-Borne Submillimeter Polarimeter with CASPER MKID readout system & \cite{galitzki2014balloon} \\
   DSN Transient Observatory & 2016 & \rr 2xROACH1, 2xKATADC  & \ac Versatile signal processor for commensal astronomy during DSN data downlinks, featuring Kurtosis Spectrometer and pulse detection & Kuiper et al (in prep) \\
   MeerKAT & Under Construction & \rr ROACH2 (SKARAB upgrade forthcoming)  & \ac "Facility Instrument" capable of producing various data products over 856~MHz bandwidth. Modes include 32k channel, 64 dual-pol antenna correlator, beamformer, transient buffer. & MeerKAT CBF Requirement Spec (private) \\
+  MeerKAT AR-1 & 2016 & \rr ROACH2  & \ac Array Release 1 beamformer and
+  correlator system operating between 900 and 1670 MHz with a digital bandwidth
+  of 856 MHz & See MeerKAT site \\ % http://public.ska.ac.za/meerkat/meerkat-schedule
   KAT7 & 2010 & \rr 16xROACH1  & \ac 7 dual-pol antenna full-stokes FX correlator & \cite{Foley01082016}, Manley thesis \\
   RATTY & 2012 & \rr 1xROACH1  & \ac Transient / RFI Monitor for SKA-SA site monitoring. & \cite{Foley01082016}, Manley thesis \\
   HOLMES & Deployment 2018 & \rr 35xROACH2, MUSIC-ADC/DAC & \ac Electron Neutrino Mass measurement with CASPER-based microwave SQUID readout system. &  \cite{Alpert2015, Ferri2016179} \\
@@ -269,7 +380,7 @@ The current release of the JASPER tool flow actually includes the castro python 
 
 \subsection{MeerKAT}
 
-%% Ask Ruby van Rooyen
+%% I have asked Ruby van Rooyen, she said she will be able to provide (Griffin)
 
 \section{Future Directions \& Challenges} \label{sec:Future}
 
