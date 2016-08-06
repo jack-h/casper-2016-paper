@@ -12,7 +12,7 @@
 \documentclass{ws-jai}
 \usepackage[flushleft]{threeparttable}
 \usepackage{pdflscape}
-\usepackage{longtable} 
+\usepackage{longtable}
 \def\btex{B{\sc IB}\TeX\ }
 \begin{document}
 
@@ -101,7 +101,7 @@ World-wide, radio astronomy is a relatively small industry and has minimal finan
 
 The CASPER community has designed multiple FPGA based hardware platforms and the software tools to design and support these platforms.
 
-Along with hardware platforms, CASPER provides a tool-flow based on the Matlab, Simulink and Xilinx System Generator (XSG) tools to enable a designer to easily design and target a particular hardware platform \cite{pars05}. The interface is a graphical design environment in Simulink where a designer can drag and drop blocks and connect them with wires in the desired configuration. A library of CASPER Digital Signal Processing (DSP) blocks are provided. These are targeted at the particular type of DSP typical of radio astronomy data processing. In addition, there is also a library of hardware specific blocks, which contain the controllers for ADCs and Ten Gigabit Ethernet (TGE) modules, amongst others. The flow provides a "One-Click" solution from design to bitstream, ready to upload onto a board. The DSP parts of the design are easily transferable to other Xilinx FPGA hardware. This eases upgrades to new hardware, as well as aiding collaboration between teams using different CASPER hardware platforms \cite{pars05}. 
+Along with hardware platforms, CASPER provides a tool-flow based on the Matlab, Simulink and Xilinx System Generator (XSG) tools to enable a designer to easily design and target a particular hardware platform \cite{pars05}. The interface is a graphical design environment in Simulink where a designer can drag and drop blocks and connect them with wires in the desired configuration. A library of CASPER Digital Signal Processing (DSP) blocks are provided. These are targeted at the particular type of DSP typical of radio astronomy data processing. In addition, there is also a library of hardware specific blocks, which contain the controllers for ADCs and Ten Gigabit Ethernet (TGE) modules, amongst others. The flow provides a "One-Click" solution from design to bitstream, ready to upload onto a board. The DSP parts of the design are easily transferable to other Xilinx FPGA hardware. This eases upgrades to new hardware, as well as aiding collaboration between teams using different CASPER hardware platforms \cite{pars05}.
 
 CASPER makes use of Ethernet as a generic backplane architecture, to provide packetised interconnects between hardware modules. In this way, instruments can consist of different types of data processing hardware. For example, it is easy to hand off parts of the processing chain to a GPU cluster by redirecting the data sent over the network to different Internet Protocol (IP) address. A design can even leverage the IP Multicast protocol\footnote{IP multicast is described in RFC 1112} which allows additional instruments to subscribe to the data and process it concurrently alongside the main instrument. This keeps the problem of full cross-bar interconnects in the domain of the switch manufactures and allows instrument designers to focus on digital signal processing \cite{man14}, \cite{pars05}.
 
@@ -116,7 +116,7 @@ Overall, CASPER has a progressive philosophy towards instrumentation design and 
 
 \section{CASPER Hardware} \label{sec:Hardware}
 
-Since its inception, the collaboration has produced a range of hardware with particular focus on FPGA boards and supporting hardware such as Analog-to-Digital Converters (ADC) and Ethernet mezzanine cards. 
+Since its inception, the collaboration has produced a range of hardware with particular focus on FPGA boards and supporting hardware such as Analog-to-Digital Converters (ADC) and Ethernet mezzanine cards.
 
 \subsection{FPGA platforms}
 
@@ -146,13 +146,13 @@ A functional block diagram of the SKARAB is presented in Figure~\ref{fig:skarab_
 \label{fig:skarab_bd}
 \end{figure}
 
-At the heart of the SKARAB processing, lies the Xilinx Virtex 7 FPGA (XC7VX690T). This FPGA consists of 693120 logic cells, 52 Mb of internal random access memory (RAM) blocks and 3600 digital signal processing (DSP) slices \cite{cliff16}. Nearly all of the input/output (I/O) available is high-speed serial/deserializer (SERDES) I/O \cite{Teag15}. 
+At the heart of the SKARAB processing, lies the Xilinx Virtex 7 FPGA (XC7VX690T). This FPGA consists of 693120 logic cells, 52 Mb of internal random access memory (RAM) blocks and 3600 digital signal processing (DSP) slices \cite{cliff16}. Nearly all of the input/output (I/O) available is high-speed serial/deserializer (SERDES) I/O \cite{Teag15}.
 
 The SKARAB makes provision for four mezzanine sites with each site interfacing with sixteen transmit and sixteen receive 10 Gbps SERDES lines \cite{cliff16}. This means each site can handle a throughput of 160 Gbps and if all the sites are utilized, a total of 640 Gbps can be achieved.
 
 There is no power personal computer (PPC), but provision has been made for the COM Express mezzanine site which can interface with an external processor via single lane PCIe \cite{Teag15}.
- 
-The SKARAB has already been tested with two existing mezzanine cards: QSFP+ Mezzanine Module and the Hybrid Memory Cube (HMC) Mezzanine Module. The Peralex QSFP+ Mezzanine Module supports four 40Gb Ethernet interfaces and the SKA-SA HMC Mezzanine module provides external memory storage for the processing using high speed serial memory \cite{cliff16}.     
+
+The SKARAB has already been tested with two existing mezzanine cards: QSFP+ Mezzanine Module and the Hybrid Memory Cube (HMC) Mezzanine Module. The Peralex QSFP+ Mezzanine Module supports four 40Gb Ethernet interfaces and the SKA-SA HMC Mezzanine module provides external memory storage for the processing using high speed serial memory \cite{cliff16}.
 
 The hardware of the SKARAB is presented in Figure~\ref{fig:skarab_hw} \cite{cliff16}.
 
@@ -164,13 +164,36 @@ The hardware of the SKARAB is presented in Figure~\ref{fig:skarab_hw} \cite{clif
 \end{figure}
 
 The SKARAB board support package (BSP) comes with the 40GbE core, 1GbE core, HMC core and the management microcontroller, which runs on the FPGA (Xilinx's microblaze processor) \cite{cliff16}. The management microcontroller sets up the network (1GbE, 40GbE), performs FPGA configuration (1GbE), monitors the voltages and currents, monitors and controls the fan speeds and handles communication to/from the FPGA via the wishbone bus \cite{cliff16} \cite{Teagu15}.
- 
+
 The SKARAB BSP is currently being added to the CASPER tool flow and should be ready in December 2016.
 SKA-SA will be integrating 300 SKARAB units, as part of the MeerKAT upgrades, and should be ready for operation latest by the end of 2017.
 
 %% Adam Isaacson
 
 \subsubsection{SNAP}
+
+%% Rachel Domagalski
+The Smart Network ADC Processor (SNAP) hardware is a lightweight next generation
+FPGA platform designed primarily as digitizing elements in the Hydrogen Epoch of
+Reionization Array (HERA) experiment. The SNAP board comes with onboard ADC's, a
+frequency synthesizer, two 10 Gbit Ethernet, and the FPGA on SNAP (the Kintex
+XC7K160T-2FFG676C chip) uses low power consumption, making the SNAP board useful
+for larger arrays. SNAP is a low-cost board. The SNAP board has one ZDOK
+connector enabling the use of the ADC cards listed below, and SNAP's onboard
+ADC's have the same specifications as the ADC16x250-8. The FPGA on the SNAP can
+be clocked either with an external frequency oscillator or with the TI LMX2581
+frequency synthesizer onboard the SNAP. The SNAP board comes with a 40-pin
+ribbon connector to interface with a  Raspberry Pi or similar computer. The
+interface to the Raspberry Pi enables the SNAP board to easily be used as a
+standalone spectrometer. FPGA gateware for the SNAP is developed using the
+JASPER tool-flow. The SNAP hardware is presented in Figure~\ref{fig:snap_hw}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm, scale=0.5]{snap_hw}
+\caption{SNAP Hardware}
+\label{fig:snap_hw}
+\end{figure}
 
 \subsection{ADCs \& DACs}
 
@@ -209,13 +232,13 @@ The JASPER tool flow is currently being upgraded to make provision for additiona
 \includegraphics[width=150mm, scale=0.5]{jasper_ug_bd}
 \caption{JASPER Upgrade Tool Flow Diagram}
 \label{fig:jasper_ug_bd}
-\end{figure}  
+\end{figure}
 
-The Front-End includes the structural VHDL or any modelling tools e.g. Matlab/Simulink, Labview, Sci-Lab/Sci-Cos and MyHDL. It includes a script which will instantiate the python classes inside the Middle End process \cite{Isaac16}. 
+The Front-End includes the structural VHDL or any modelling tools e.g. Matlab/Simulink, Labview, Sci-Lab/Sci-Cos and MyHDL. It includes a script which will instantiate the python classes inside the Middle End process \cite{Isaac16}.
 
 The python classes are located in the Middle End (castro.py) file. In the future, it is likely that the Front End will come in through another interface e.g. possibly IP-XACT in order to make provision to interface to other simulation tools e.g. Sci-Cos and Sci-Lab. This interface is denoted by the dashed lines in Figure~\ref{fig:jasper_ug_bd}. IP-XACT is an IEEE standard and is used to integrate different IP packages together, provided that the IP interfacing meets the IP-XACT standard. The IP-XACT interface would be in the form of an XML script. The decision to utilise IP-XACT has not been finalised yet. The castro.py is passed all the Front End memory map, constraints and source files. The castro.py script takes this metadata from the Front End and dumps all of this metadata into a YAML configuration file (config.yml). It should be noted that the Middle End module is not platform agnostic due to the hardware and platform metadata \cite{Isaac16}.
 
-The Back End consists of the same castro python class that exists in the Middle End. The castro.py python script will load the config.yml file/metadata and instantiate python objects with this metadata, which will either be sent to RadioHDL if targeting the Altera hardware or the Casper Back End, if targeting the Xilinx hardware. This will also allow the user to target other vendor hardware in the future e.g. Lattice and Actel and due to the common castro.py python script, it will easier to just add an additional back end \cite{Isaac16}. 
+The Back End consists of the same castro python class that exists in the Middle End. The castro.py python script will load the config.yml file/metadata and instantiate python objects with this metadata, which will either be sent to RadioHDL if targeting the Altera hardware or the Casper Back End, if targeting the Xilinx hardware. This will also allow the user to target other vendor hardware in the future e.g. Lattice and Actel and due to the common castro.py python script, it will easier to just add an additional back end \cite{Isaac16}.
 
 The RadioHDL process will then generate the necessary Quartus project files and run the compiler. The output of the process will be the Altera FPGA SRAM Object file (sof) and Programming Object File (pof). The Casper Back End generates the necessary tcl scripts, which runs the Vivado compiler. The output of the process is the Xilinx FPGA bit and Borph Object File (bof) programmable files \cite{Isaac16}.
 
@@ -346,7 +369,7 @@ are regularly merged into the main library.
   %RATTY & 2012 & \rr 1xROACH1  & \ac Transient / RFI Monitor for SKA-SA site monitoring& \rr  & \cite{Foley01082016}, Manley thesis \\
   Academic Radio Interferometer (ARI) & 2012 & \rr 1xROACH1 1xADC2x1000-8 & \ac 21-cm dual-antenna interferometer for teaching purposes & see email from Pedro Salas \\
   pocketcorr & 2014 & \rr ROACH1 / ROACH2 / SNAP & \ac Multi-platform single-board FX correlator. Used in HYPERION deployment and PAPER testing & \footnote{\url{https://github.com/domagalski/pocketcorr}} \\
-  Leuschner Spectrometer & 2015 & \rr ROACH1, iADC  & \ac dual-polarization, 12 MHz, 8192 channel spectrometer for UC Berkeley's Leuschner Radio Observatory & \footnote{\url{http://w.astro.berkeley.edu/~domagalski/leuschner-radio/}} \\
+  Leuschner Spectrometer & 2015 & \rr ROACH1, iADC  & \ac dual-polarization, 12 MHz, 8192 channel spectrometer for UC Berkeley's Leuschner Radio Observatory & \footnote{\url{https://github.com/domagalski/leuschner-spectrometer}} \\
   BLAST-TNG & 2017 & \rr 5xROACH2, 5xMUSIC-DAC/ADC  & \ac 2.5~m Balloon-Borne Submillimeter Polarimeter with CASPER MKID readout system & \cite{galitzki2014balloon} \\
   DSN Transient Observatory & 2016 & \rr 2xROACH1, 2xKATADC  & \ac Versatile signal processor for commensal astronomy during DSN data downlinks, featuring Kurtosis Spectrometer and pulse detection & Kuiper et al (in prep) \\
   MeerKAT & Under Construction & \rr ROACH2 (SKARAB upgrade forthcoming)  & \ac "Facility Instrument" capable of producing various data products over 856~MHz bandwidth. Modes include 32k channel, 64 dual-pol antenna correlator, beamformer, transient buffer. & MeerKAT CBF Requirement Spec (private) \\
@@ -362,7 +385,7 @@ are regularly merged into the main library.
   GRASP & 2016 & \rr 1xROACH1, 1xQUAD ADC & \ac 100 MHz bandwidth full-stokes spectrometer for the Gauribidnaur Radio Solar spectro-Polarimter. & Indrajit \\
   AMiBA Correlator Upgrade & 2016 & \rr 8xROACH2, 14xADC5G & \ac 7 dual-pol antenna 4.48~GHz bandwidth FX correlator & Homin \\
   ALMA Phased Array & 2014 & \rr 8xROACH2 & \ac Time-tagging, ethernet packetization and VDIF (VLBI) formatting & \cite{2012evn..confE..53A} \\
-  AMI Correlator Upgrade & 2015 & 18xROACH2, 36xADC5G & 5~GHz, 4096 channel FX Correlator for the Arcminute Microkelvin Imager arrays. & \cite{Zwart21122008}, Hickish et al. (in prep) \\ 
+  AMI Correlator Upgrade & 2015 & 18xROACH2, 36xADC5G & 5~GHz, 4096 channel FX Correlator for the Arcminute Microkelvin Imager arrays. & \cite{Zwart21122008}, Hickish et al. (in prep) \\
   SWARM Correlator & & & & \\
   Medicina FFTT & 2014 & 3xROACH1, 1xADC64 & A multi-board digitization, channelisation, beamforming correlation system, used to demonstrate direct-imaging on the BEST-2 Array & \cite{Foster11042014} \\
   HIPSR & 2014 & 13xROACH1, 13xiADC & 400~MHz bandwidth 8192 channel spectrometer and high time-resolution system for the Parkes multibeam receiver & \footnote{\url{http://telegraphic.github.io/hipsr/overview.html}} \\
@@ -390,7 +413,7 @@ are regularly merged into the main library.
 
 \subsubsection{High Speed Memories} \label{sec: HSM}
 
-%% HMC 
+%% HMC
 
 \subsection{Support of off-the-shelf hardware}
 
@@ -409,4 +432,4 @@ are regularly merged into the main library.
 \bibliography{casper-2016}
 
 
-\end{document} 
+\end{document}

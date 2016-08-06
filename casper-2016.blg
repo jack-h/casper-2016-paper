@@ -1,4 +1,5 @@
-This is BibTeX, Version 0.99c (Web2C 7.5.6)
+This is BibTeX, Version 0.99d (TeX Live 2016/Arch Linux)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: casper-2016.aux
 The style file: ws-jai.bst
 Database file #1: casper-2016.bib
@@ -10,47 +11,47 @@ Warning--entry type for "guppi" isn't style-file defined
 World Scientific's Bibliography Style File for jai
 version 1.0 (2005/03/26), Sorted
 for support: Rajesh, rajesh@wspc.com.sg
-Reallocated wiz_functions (elt_size=4) to 6000 items from 140733193391032.
+Reallocated wiz_functions (elt_size=8) to 6000 items from 3000.
 Warning--empty year in gbtrans; set to ????
-You've used 29 entries,
+You've used 31 entries,
             3274 wiz_defined-function locations,
-            872 strings with 16560 characters,
-and the built_in function-call counts, 35290 in all, are:
-= -- 2094
-> -- 3474
-< -- 26
-+ -- 1317
-- -- 1281
-* -- 3363
-:= -- 5714
-add.period$ -- 47
-call.type$ -- 29
-change.case$ -- 565
-chr.to.int$ -- 28
-cite$ -- 30
-duplicate$ -- 2015
-empty$ -- 1522
-format.name$ -- 1354
-if$ -- 6528
+            881 strings with 16788 characters,
+and the built_in function-call counts, 36090 in all, are:
+= -- 2166
+> -- 3494
+< -- 28
++ -- 1325
+- -- 1287
+* -- 3409
+:= -- 5854
+add.period$ -- 51
+call.type$ -- 31
+change.case$ -- 577
+chr.to.int$ -- 30
+cite$ -- 32
+duplicate$ -- 2083
+empty$ -- 1584
+format.name$ -- 1362
+if$ -- 6684
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 596
-newline$ -- 97
-num.names$ -- 116
-pop$ -- 1217
+missing$ -- 608
+newline$ -- 103
+num.names$ -- 124
+pop$ -- 1243
 preamble$ -- 1
-purify$ -- 541
+purify$ -- 551
 quote$ -- 0
-skip$ -- 614
+skip$ -- 644
 stack$ -- 0
-substring$ -- 567
-swap$ -- 1430
+substring$ -- 591
+swap$ -- 1456
 text.length$ -- 15
 text.prefix$ -- 0
 top$ -- 4
-type$ -- 261
+type$ -- 279
 warning$ -- 1
-while$ -- 109
+while$ -- 115
 width$ -- 0
-write$ -- 331
+write$ -- 355
 (There were 3 warnings)
