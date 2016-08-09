@@ -12,7 +12,7 @@
 \documentclass{ws-jai}
 \usepackage[flushleft]{threeparttable}
 \usepackage{pdflscape}
-\usepackage{longtable} 
+\usepackage{longtable}
 \def\btex{B{\sc IB}\TeX\ }
 \begin{document}
 
@@ -101,7 +101,7 @@ World-wide, radio astronomy is a relatively small industry and has minimal finan
 
 The CASPER community has designed multiple FPGA based hardware platforms and the software tools to design and support these platforms.
 
-Along with hardware platforms, CASPER provides a tool-flow based on the Matlab, Simulink and Xilinx System Generator (XSG) tools to enable a designer to easily design and target a particular hardware platform \cite{pars05}. The interface is a graphical design environment in Simulink where a designer can drag and drop blocks and connect them with wires in the desired configuration. A library of CASPER Digital Signal Processing (DSP) blocks are provided. These are targeted at the particular type of DSP typical of radio astronomy data processing. In addition, there is also a library of hardware specific blocks, which contain the controllers for ADCs and Ten Gigabit Ethernet (TGE) modules, amongst others. The flow provides a "One-Click" solution from design to bitstream, ready to upload onto a board. The DSP parts of the design are easily transferable to other Xilinx FPGA hardware. This eases upgrades to new hardware, as well as aiding collaboration between teams using different CASPER hardware platforms \cite{pars05}. 
+Along with hardware platforms, CASPER provides a tool-flow based on the Matlab, Simulink and Xilinx System Generator (XSG) tools to enable a designer to easily design and target a particular hardware platform \cite{pars05}. The interface is a graphical design environment in Simulink where a designer can drag and drop blocks and connect them with wires in the desired configuration. A library of CASPER Digital Signal Processing (DSP) blocks are provided. These are targeted at the particular type of DSP typical of radio astronomy data processing. In addition, there is also a library of hardware specific blocks, which contain the controllers for ADCs and Ten Gigabit Ethernet (TGE) modules, amongst others. The flow provides a "One-Click" solution from design to bitstream, ready to upload onto a board. The DSP parts of the design are easily transferable to other Xilinx FPGA hardware. This eases upgrades to new hardware, as well as aiding collaboration between teams using different CASPER hardware platforms \cite{pars05}.
 
 CASPER makes use of Ethernet as a generic backplane architecture, to provide packetised interconnects between hardware modules. In this way, instruments can consist of different types of data processing hardware. For example, it is easy to hand off parts of the processing chain to a GPU cluster by redirecting the data sent over the network to different Internet Protocol (IP) address. A design can even leverage the IP Multicast protocol\footnote{IP multicast is described in RFC 1112} which allows additional instruments to subscribe to the data and process it concurrently alongside the main instrument. This keeps the problem of full cross-bar interconnects in the domain of the switch manufactures and allows instrument designers to focus on digital signal processing \cite{man14}, \cite{pars05}.
 
@@ -116,7 +116,7 @@ Overall, CASPER has a progressive philosophy towards instrumentation design and 
 
 \section{CASPER Hardware} \label{sec:Hardware}
 
-Since its inception, the collaboration has produced a range of hardware with particular focus on FPGA boards and supporting hardware such as Analog-to-Digital Converters (ADC) and Ethernet mezzanine cards. 
+Since its inception, the collaboration has produced a range of hardware with particular focus on FPGA boards and supporting hardware such as Analog-to-Digital Converters (ADC) and Ethernet mezzanine cards.
 
 \subsection{FPGA platforms}
 
@@ -146,13 +146,13 @@ A functional block diagram of the SKARAB is presented in Figure~\ref{fig:skarab_
 \label{fig:skarab_bd}
 \end{figure}
 
-At the heart of the SKARAB processing, lies the Xilinx Virtex 7 FPGA (XC7VX690T). This FPGA consists of 693120 logic cells, 52 Mb of internal random access memory (RAM) blocks and 3600 digital signal processing (DSP) slices \cite{cliff16}. Nearly all of the input/output (I/O) available is high-speed serial/deserializer (SERDES) I/O \cite{Teag15}. 
+At the heart of the SKARAB processing, lies the Xilinx Virtex 7 FPGA (XC7VX690T). This FPGA consists of 693120 logic cells, 52 Mb of internal random access memory (RAM) blocks and 3600 digital signal processing (DSP) slices \cite{cliff16}. Nearly all of the input/output (I/O) available is high-speed serial/deserializer (SERDES) I/O \cite{Teag15}.
 
 The SKARAB makes provision for four mezzanine sites with each site interfacing with sixteen transmit and sixteen receive 10 Gbps SERDES lines \cite{cliff16}. This means each site can handle a throughput of 160 Gbps and if all the sites are utilized, a total of 640 Gbps can be achieved.
 
 There is no power personal computer (PPC), but provision has been made for the COM Express mezzanine site which can interface with an external processor via single lane PCIe \cite{Teag15}.
- 
-The SKARAB has already been tested with two existing mezzanine cards: QSFP+ Mezzanine Module and the Hybrid Memory Cube (HMC) Mezzanine Module. The Peralex QSFP+ Mezzanine Module supports four 40Gb Ethernet interfaces and the SKA-SA HMC Mezzanine module provides external memory storage for the processing using high speed serial memory \cite{cliff16}.     
+
+The SKARAB has already been tested with two existing mezzanine cards: QSFP+ Mezzanine Module and the Hybrid Memory Cube (HMC) Mezzanine Module. The Peralex QSFP+ Mezzanine Module supports four 40Gb Ethernet interfaces and the SKA-SA HMC Mezzanine module provides external memory storage for the processing using high speed serial memory \cite{cliff16}.
 
 The hardware of the SKARAB is presented in Figure~\ref{fig:skarab_hw} \cite{cliff16}.
 
@@ -164,13 +164,36 @@ The hardware of the SKARAB is presented in Figure~\ref{fig:skarab_hw} \cite{clif
 \end{figure}
 
 The SKARAB board support package (BSP) comes with the 40GbE core, 1GbE core, HMC core and the management microcontroller, which runs on the FPGA (Xilinx's microblaze processor) \cite{cliff16}. The management microcontroller sets up the network (1GbE, 40GbE), performs FPGA configuration (1GbE), monitors the voltages and currents, monitors and controls the fan speeds and handles communication to/from the FPGA via the wishbone bus \cite{cliff16} \cite{Teagu15}.
- 
+
 The SKARAB BSP is currently being added to the CASPER tool flow and should be ready in December 2016.
 SKA-SA will be integrating 300 SKARAB units, as part of the MeerKAT upgrades, and should be ready for operation latest by the end of 2017.
 
 %% Adam Isaacson
 
 \subsubsection{SNAP}
+
+%% Rachel Domagalski
+The Smart Network ADC Processor (SNAP) hardware is a lightweight next generation
+FPGA platform designed primarily as digitizing elements in the Hydrogen Epoch of
+Reionization Array (HERA) experiment. The SNAP board comes with onboard ADC's, a
+frequency synthesizer, two 10 Gbit Ethernet, and the FPGA on SNAP (the Kintex
+XC7K160T-2FFG676C chip) uses low power consumption, making the SNAP board useful
+for larger arrays. SNAP is a low-cost board. The SNAP board has one ZDOK
+connector enabling the use of the ADC cards listed below, and SNAP's onboard
+ADC's have the same specifications as the ADC16x250-8. The FPGA on the SNAP can
+be clocked either with an external frequency oscillator or with the TI LMX2581
+frequency synthesizer onboard the SNAP. The SNAP board comes with a 40-pin
+ribbon connector to interface with a  Raspberry Pi or similar computer. The
+interface to the Raspberry Pi enables the SNAP board to easily be used as a
+standalone spectrometer. FPGA gateware for the SNAP is developed using the
+JASPER tool-flow. The SNAP hardware is presented in Figure~\ref{fig:snap_hw}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=150mm, scale=0.5]{snap_hw}
+\caption{SNAP Hardware}
+\label{fig:snap_hw}
+\end{figure}
 
 \subsection{ADCs \& DACs}
 
@@ -209,13 +232,13 @@ The JASPER tool flow is currently being upgraded to make provision for additiona
 \includegraphics[width=150mm, scale=0.5]{jasper_ug_bd}
 \caption{JASPER Upgrade Tool Flow Diagram}
 \label{fig:jasper_ug_bd}
-\end{figure}  
+\end{figure}
 
-The Front-End includes the structural VHDL or any modelling tools e.g. Matlab/Simulink, Labview, Sci-Lab/Sci-Cos and MyHDL. It includes a script which will instantiate the python classes inside the Middle End process \cite{Isaac16}. 
+The Front-End includes the structural VHDL or any modelling tools e.g. Matlab/Simulink, Labview, Sci-Lab/Sci-Cos and MyHDL. It includes a script which will instantiate the python classes inside the Middle End process \cite{Isaac16}.
 
 The python classes are located in the Middle End (castro.py) file. In the future, it is likely that the Front End will come in through another interface e.g. possibly IP-XACT in order to make provision to interface to other simulation tools e.g. Sci-Cos and Sci-Lab. This interface is denoted by the dashed lines in Figure~\ref{fig:jasper_ug_bd}. IP-XACT is an IEEE standard and is used to integrate different IP packages together, provided that the IP interfacing meets the IP-XACT standard. The IP-XACT interface would be in the form of an XML script. The decision to utilise IP-XACT has not been finalised yet. The castro.py is passed all the Front End memory map, constraints and source files. The castro.py script takes this metadata from the Front End and dumps all of this metadata into a YAML configuration file (config.yml). It should be noted that the Middle End module is not platform agnostic due to the hardware and platform metadata \cite{Isaac16}.
 
-The Back End consists of the same castro python class that exists in the Middle End. The castro.py python script will load the config.yml file/metadata and instantiate python objects with this metadata, which will either be sent to RadioHDL if targeting the Altera hardware or the Casper Back End, if targeting the Xilinx hardware. This will also allow the user to target other vendor hardware in the future e.g. Lattice and Actel and due to the common castro.py python script, it will easier to just add an additional back end \cite{Isaac16}. 
+The Back End consists of the same castro python class that exists in the Middle End. The castro.py python script will load the config.yml file/metadata and instantiate python objects with this metadata, which will either be sent to RadioHDL if targeting the Altera hardware or the Casper Back End, if targeting the Xilinx hardware. This will also allow the user to target other vendor hardware in the future e.g. Lattice and Actel and due to the common castro.py python script, it will easier to just add an additional back end \cite{Isaac16}.
 
 The RadioHDL process will then generate the necessary Quartus project files and run the compiler. The output of the process will be the Altera FPGA SRAM Object file (sof) and Programming Object File (pof). The Casper Back End generates the necessary tcl scripts, which runs the Vivado compiler. The output of the process is the Xilinx FPGA bit and Borph Object File (bof) programmable files \cite{Isaac16}.
 
@@ -324,59 +347,80 @@ are regularly merged into the main library.
 
 \section{CASPER Deployments} \label{sec:Deployments}
 
-\newcommand{\rr}{\raggedright}
-\newcommand{\tn}{\tabularnewline}
-\newcommand{\ac}{\centering}
-\begin{landscape}
-%\begin{tabularx}
-  \centering
-  %\begin{tabular}{p{3cm} c p{4cm} p{4cm} p{4cm} p{2cm}}
-  \begin{longtable}{p{3cm} c p{4cm} p{8cm} p{2cm}}
-  \label{table:casper-instruments}
-  %\ac Instrument & \ac Year & \ac Hardware & \ac Description & \ac CASPER Functionality & \ac References \tn
-  \ac Instrument & \ac Year & \ac Hardware & \ac Description & \ac References \tn
+\begin{table}
+\label{table:casper-instruments-spectrometers}
+\caption{Spectrometers and packetizers powered by CASPER hardware.}
+\centering
+\begin{tabular}{ccp{10cm}}
+  Instrument & Year & Description \\
   \hline
-  %Academic Radio Interferometer (ARI) & 2012 & \rr 1xROACH1 1xADC2x1000-8 & \ac 21-cm dual-antenna interferometer for teaching purposes & \rr digitization, delay compensation, correlation & see email from Pedro Salas \\
-  %pocketcorr & 2014 & \rr ROACH1 / ROACH2 / SNAP & \ac Multi-platform single-board correlator. & \rr digitization, channelisation, correlation & \footnote{\url{https://github.com/domagalski/pocketcorr}} \\
-  %Leuschner Spectrometer & 2015 & \rr ROACH1, iADC  & \ac dual-polarization, 12 MHz, 8192 channel spectrometer. & \rr digitization, channelisation, power detection & \footnote{\url{http://w.astro.berkeley.edu/~domagalski/leuschner-radio/}} \\
-  %BLAST-TNG & 2017 & \rr 5xROACH2, 5xMUSIC-DAC/ADC  & \ac 2.5~m Balloon-Borne Submillimeter Polarimeter & \rr MKID readout & \cite{galitzki2014balloon} \\
-  %DSN Transient Observatory & 2016 & \rr 2xROACH1, 2xKATADC  & \ac Versatile signal processor for commensal astronomy during DSN data downlinks & \rr Kurtosis Spectrometer, pulse detection & Kuiper et al (in prep) \\
-  %MeerKAT & Under Construction & \rr ROACH2 (SKARAB upgrade forthcoming)  & \ac "Facility Instrument" capable of producing various data products over 856~MHz bandwidth & \rr 32k channel, 64 dual-pol antenna correlator. Beamformer. Transient buffer. & MeerKAT CBF Requirement Spec (private) \\
-  %KAT7 & 2010 & \rr 16xROACH1  & \ac 7 dual-pol antenna full-stokes correlator & \rr channelization. correlation & \cite{Foley01082016}, Manley thesis \\
-  %RATTY & 2012 & \rr 1xROACH1  & \ac Transient / RFI Monitor for SKA-SA site monitoring& \rr  & \cite{Foley01082016}, Manley thesis \\
-  Academic Radio Interferometer (ARI) & 2012 & \rr 1xROACH1 1xADC2x1000-8 & \ac 21-cm dual-antenna interferometer for teaching purposes & see email from Pedro Salas \\
-  pocketcorr & 2014 & \rr ROACH1 / ROACH2 / SNAP & \ac Multi-platform single-board FX correlator. Used in HYPERION deployment and PAPER testing & \footnote{\url{https://github.com/domagalski/pocketcorr}} \\
-  Leuschner Spectrometer & 2015 & \rr ROACH1, iADC  & \ac dual-polarization, 12 MHz, 8192 channel spectrometer for UC Berkeley's Leuschner Radio Observatory & \footnote{\url{http://w.astro.berkeley.edu/~domagalski/leuschner-radio/}} \\
-  BLAST-TNG & 2017 & \rr 5xROACH2, 5xMUSIC-DAC/ADC  & \ac 2.5~m Balloon-Borne Submillimeter Polarimeter with CASPER MKID readout system & \cite{galitzki2014balloon} \\
-  DSN Transient Observatory & 2016 & \rr 2xROACH1, 2xKATADC  & \ac Versatile signal processor for commensal astronomy during DSN data downlinks, featuring Kurtosis Spectrometer and pulse detection & Kuiper et al (in prep) \\
-  MeerKAT & Under Construction & \rr ROACH2 (SKARAB upgrade forthcoming)  & \ac "Facility Instrument" capable of producing various data products over 856~MHz bandwidth. Modes include 32k channel, 64 dual-pol antenna correlator, beamformer, transient buffer. & MeerKAT CBF Requirement Spec (private) \\
-  MeerKAT AR-1 & 2016 & \rr ROACH2  & \ac Array Release 1 beamformer and
-  correlator system operating between 900 and 1670 MHz with a digital bandwidth
-  of 856 MHz & See MeerKAT site \\ % http://public.ska.ac.za/meerkat/meerkat-schedule
-  KAT7 & 2010 & \rr 16xROACH1  & \ac 7 dual-pol antenna full-stokes FX correlator & \cite{Foley01082016}, Manley thesis \\
-  RATTY & 2012 & \rr 1xROACH1  & \ac Transient / RFI Monitor for SKA-SA site monitoring. & \cite{Foley01082016}, Manley thesis \\
-  HOLMES & Deployment 2018 & \rr 35xROACH2, MUSIC-ADC/DAC & \ac Electron Neutrino Mass measurement with CASPER-based microwave SQUID readout system. &  \cite{Alpert2015, Ferri2016179} \\
-  GAVRT & 2009-2012 & \rr 8xiBOB, 16xiADC, BEE2 & \ac 8~GHz instantaneous bandwidth transient capture buffer with real-time incoherend dedispersion trigger.  & \cite{jon10, JonesDSS28} \\
-  cycSpec & 2012 & \rr ROACH1/ADC83000 (Arecibo), ROACH2/ADC5G (GBT) & \ac Real-time cyclic spectrometer, deployed at Arecibo and GBT on consecutive generations of hardware. 128~MHz bandwidth CASPER-based overlapping filterbank used to feed GPU processors.  & Jones et al (in prep) \\
-  Columbia MKID readout & 2012 & \rr initially ROACH1, upgraded to ROACH2 & \ac MKID readout system with CASPER-based tone generation, digitization and coarse channelization. Feeds non-CASPER HPC processors. & \cite{mccarrick_2014} \\
-  GRASP & 2016 & \rr 1xROACH1, 1xQUAD ADC & \ac 100 MHz bandwidth full-stokes spectrometer for the Gauribidnaur Radio Solar spectro-Polarimter. & Indrajit \\
-  AMiBA Correlator Upgrade & 2016 & \rr 8xROACH2, 14xADC5G & \ac 7 dual-pol antenna 4.48~GHz bandwidth FX correlator & Homin \\
-  ALMA Phased Array & 2014 & \rr 8xROACH2 & \ac Time-tagging, ethernet packetization and VDIF (VLBI) formatting & \cite{2012evn..confE..53A} \\
-  AMI Correlator Upgrade & 2015 & 18xROACH2, 36xADC5G & 5~GHz, 4096 channel FX Correlator for the Arcminute Microkelvin Imager arrays. & \cite{Zwart21122008}, Hickish et al. (in prep) \\ 
-  SWARM Correlator & & & & \\
-  Medicina FFTT & 2014 & 3xROACH1, 1xADC64 & A multi-board digitization, channelisation, beamforming correlation system, used to demonstrate direct-imaging on the BEST-2 Array & \cite{Foster11042014} \\
-  HIPSR & 2014 & 13xROACH1, 13xiADC & 400~MHz bandwidth 8192 channel spectrometer and high time-resolution system for the Parkes multibeam receiver & \footnote{\url{http://telegraphic.github.io/hipsr/overview.html}} \\
-  MITEoR & 2014 & 4xROACH2 4xADC64 & 50~MHz bandwidth, 128 dual-polarization antenna FX correlator, used to investigate spatial-FFT correlation methods & \cite{2014MNRAS.445.1084Z} \\
+  Leuschner Spectrometer & 2015 & Dual-polarization, 12 MHz, 8192 channel spectrometer for UC Berkeley's Leuschner Radio Observatory. Based on ROACH1 and ADC2x1000-8\footnote{\url{https://github.com/domagalski/leuschner-spectrometer}} \\
+  DSN Transient Observatory & 2016 & Versatile signal processor for commensal astronomy during DSN data downlinks, featuring Kurtosis Spectrometer and pulse detection. Based on a pair of ROACH boards with KATADCs \citep{Kuiper et al (in prep)}. \\
+  RATTY            & 2012 & Transient / RFI Monitor for SKA-SA site monitoring implemented on a single ROACH board \citep{Foley01082016, Manley thesis}. \\
+  cycSpec          & 2012 & Real-time cyclic spectrometer, deployed at Arecibo (ROACH) and GBT (ROACH2) on consecutive generations of hardware. Implements a filterbank of 128~MHz overlapping channels used to feed GPU processors \citep{Jones et al (in prep)}. \\
+  GRASP            & 2016 & 100 MHz bandwidth full-stokes spectrometer for the Gauribidnaur Radio Solar spectro-Polarimter. Implemented on a single ROACH board with quADC digitizer \citep{Indrajit}. \\
+  HIPSR            & 2014 & 400~MHz bandwidth 8192 channel spectrometer and high time-resolution system for the Parkes multibeam receiver. Based on 13 ROACH1 boards and 13 ADC1x1000-8 digitizers\footnote{\url{http://telegraphic.github.io/hipsr/overview.html}}. \\
+  Skynet           & 2012 & Single board ROACH-based educational spectrometer for the Green Bank 20m telescope. Provides 500MHz BW, dual-polarized input, and 1024 channels \citep{skynet}. \\
+  GBTrans          & 2014 & Single board ROACH-based transient event spectrometer for the Green Bank 20m telescope, 500MHz BW, dual-polarized input, and 2048 channels \citep{gbtrans}. \\
+  KuPol            & 2014 & 6 GHz bandwidth full Stokes spectrometer, implemented with 12 ROACH boards and 24 ADC1x1000-8 digitizers \citep{2013arXiv1303.2131M}. \\
+  Canberra DSN     & 2016 & 16~GHz single pol or 8~GHz dual-pol spectrometer. Implemented using 4 ROACH2 boards \citep{Kocz, in prep}. \\
+  BPSR             & 2009 & 400~MHz bandwidth, 13-beam fast-dump spectrometer for the Parkes multibeam receiver. Originally implemented with iBOBs. Upgraded in 2012 to use 13 ROACH boards \citep{2010MNRAS.409..619K}. \\
+  NUPPI            & 2011 & 512~MHz digitization and flexible (32-1024 channel) channeliser for pulsar observations. Implemented using a single ROACH board with ADC1x1000-8 digitizer \citep{2014MNRAS.443.3752L}. \\
+  VEGAS            & 2014 & Versatile spectrometer for the GBT, providing up to 10GHz BW for 1 dual-polarized input or 1.25GHz BW for 8x dual-polarized inputs. Features wideband modes and narrowband modes with 8 digitally tuned sub-bands within the 1.25GHz BW. Implemented using 8 ROACH2 boards with ADC1x5000-8 digitizers \citep{chennamangalam2014gpu}. \\
+  GAVRT            & 2009-2012 & 8~GHz instantaneous bandwidth transient capture buffer with real-time incoherent dedispersion trigger. Implemented with 8 iBOBs, 16 ADC2x1000-8s and a BEE2 \citep{jon10, JonesDSS28}. \\
+  ALMA Phased Array& 2014 & 8 ROACH2 system for time-tagging, ethernet packetization and VDIF (VLBI) formatting \citep{2012evn..confE..53A}. \\
+  GUPPI            & 2009 & Pulsar processor with the Green Bank Telescope. Provides full stokes polarimetry and ethernet packetizing with up to 800 MHz BW. Based on a pair of iBOB boards with ADC1x1000-8 digitizers and a BEE2 \citep{guppi}. \\
+  CASPSR           & 2009 & 400~MHz bandwith packetizer for GPU-based pulsar processing backend at the Parkes telescope. Originally implemented with an iBOB. Later upgraded to a ROACH board with ADC1x1000-8 digitizer\footnote{\url{https://astronomy.swin.edu.au/pulsar/?topic=caspsr}} \\
+\end{tabular}
+\end{table}
 
-  VEGAS           & 2014 & 16xADC5G, 8xROACH2, 16xSFP+ & Spectrometer for the GBT, 10GHz BW for 1x dual-polarized input or 1.25GHz BW for 8x dual-polarized inputs. Wideband modes and narrowband modes, 8 digitally tuned sub-bands within the 1.25GHz BW                                                                                                                                                          & \cite{chennamangalam2014gpu} \\
-  Skynet          & 2012 & 2xiADC, 1xROACH1, 1xCX4     & Skynet educational spectrometer for the Green Bank 20m telescope, 500MHz BW, dual-polarized input, and 1024 channels& \cite{skynet} \\
-  GBTrans         & 2014 & 2xiADC, 1xROACH1, 1xCX4     & Transient event spectrometer for the Green Bank 20m telescope, 500MHz BW, dual-polarized input, and 2048 channels & \cite{gbtrans} \\
-  GUPPI           & 2009 & 2xiADC, 2xiBOB, 1xBEE2,     & Full stokes DSP polarimetry and packetizing, up to 800 MHz BW                                                      & \cite{guppi} \\
-  Mustang2        & 2015 & 4xROACH1                    & 90GHz FPA TES bolometer array, with Microwave-multiplexed SQUIDs                                                  & \cite{2016JLTP..184..460S} , \cite{2014JLTP..176..808D}  \\
-  FLAG Beamformer & 2016 & 5xROACH2, 5xSFP+            & 19 dual-polarized PAF system for the GBT,  150 MHz BW                                                             & \cite{gb_flag} , \cite{gb_beamformer} \\
-  \end{longtable}
-%\end{longtable}
-\end{landscape}
+
+\begin{table}
+\label{table:casper-instruments-mkid}
+\caption{MKID readout systems powered by CASPER hardware.}
+\centering
+\begin{tabular}{ccp{10cm}}
+  Instrument & Year & Description \\
+  \hline
+  BLAST-TNG        & 2017 &  2.5~m Balloon-Borne Submillimeter Polarimeter with CASPER MKID readout system. BAsed on 5 ROACH2 boards with MUSIC-DAC/ADC cards \citep{galitzki2014balloon}. \\
+  HOLMES           & 2018 & Electron Neutrino Mass measurement experiment with CASPER-based microwave SQUID readout system, based on 35 ROACH2 boards with MUSIC-ADC/DAC cards \cite{Alpert2015, Ferri2016179.} \\
+  Columbia MKID    & 2012 & ROACH (later ROACH2) based MKID readout system with CASPER-based tone generation, digitization and coarse channelization. Feeds non-CASPER HPC processors \citep{mccarrick_2014}. \\
+  Mustang2         & 2015 & 90GHz FPA TES bolometer array, with Microwave-multiplexed SQUIDs. Based on 4 ROACH boards \citep{2016JLTP..184..460S, 2014JLTP..176..808D}.  \\
+  COMAP            & Development & 4~GHz, 19-pixel MKID readout system, implemented using 38 ROACH2 boards \footnote{\url{http://www.astro.caltech.edu/CRAL/projects.html}}. \\
+  ARCONS           & 2011 & 250-pixel MKID readout system with 500~MHz bandwidth between 3.5-5.5~GHz. Implemented using 8 ROACH boards with MUSIC ADC/DAC cards \citep{10.1086/674013}. \\
+  DARKNESS         & 2016 & 10,000 MKID pixel readout system with 2~GHz bandwidth between 4-8~GHz. Implemented with 10 ROACH2 boards and custom ADC/DAC/IF cards \citep{in prep}. \\
+  MEC              & 2017 & Expansion of DARKNESS system to accommodate 20,000 pixel readout, using 20 ROACH2 boards with custom ADC/DAC/IF cards \citep{in prep}. \\
+\end{tabular}
+\end{table}
+
+\begin{table}
+\label{table:casper-instruments-correlators}
+\caption{Correlators and beamformers using CASPER hardware for either their `F', `X' or beamforming stages.}
+\centering
+\begin{tabular}{ccp{10cm}}
+  Instrument & Year & Description \\
+  \hline
+  ARI              & 2012 & 21-cm dual-antenna interferometer for teaching purposes. Based on a single ROACH and ADC2x1000-8 \citep{MScSalas2014}. \\
+  pocketcorr       & 2014 &  Multi-platform (ROACH, ROACH2, SNAP) single-board FX correlator. Used in HYPERION deployment and PAPER testing\footnote{\url{https://github.com/domagalski/pocketcorr}} \\
+  MeerKAT          & Development & ``Facility Instrument'' capable of producing various data products over 856~MHz bandwidth. Modes include 32k channel, 64 dual-pol antenna correlator, beamformer and transient buffer. Currently based on ROACH2 boards, with a SKARAB upgrade forthcoming \citep{MeerKAT CBF Requirement Spec}. \\
+  MeerKAT AR-1     & 2016 & MeetKAT Array Release 1. Beamformer and correlator system operating between 900 and 1670 MHz with a digital bandwidth of 856 MHz\footnote{\url{http://public.ska.ac.za/meerkat/meerkat-schedule}} \\
+  KAT7             & 2010 & 7 dual-pol antenna full-stokes FX correlator, based on 16 ROACH boards \cite{Foley01082016}, Manley thesis \\
+  AMI              & 2015 & 5~GHz, 4096 channel FX Correlator for the 10-antenna and 8-antenna Arcminute Microkelvin Imager arrays. Based on 18 ROACH2 boards with 36 ADC1x5000-8 digitizers \citep{Zwart21122008,Hickish et al. (in prep)}. \\
+  %SWARM Correlator & & & & \\
+  Medicina FFTT    & 2014 & A digitization, channelisation, beamforming and correlation system, used to demonstrate direct-imaging on the BEST-2 Array. Based on 3 ROACH1 boards and an ADC64x64-12 diitizer \citep{Foster11042014}. \\
+  MITEoR           & 2014 & 50~MHz bandwidth, 64 dual-polarization antenna FX correlator, used to investigate spatial-FFT correlation methods. Implemented using 4 ROACH2 boards each with ADC64x64-12 digitizers \citep{2014MNRAS.445.1084Z}. \\
+  FLAG             & 2016 & 19 dual-polarized input PAF system for the GBT. Provides 150 MHz BW using 5 ROACH2 boards \citep{gb_flag, gb_beamformer}. \\
+  BIRALES          & 2016 & 14~MHz bandwidth, 32-input digitization and channelisation system for software beamformer. Implemented using a single ROACH board with ADC64x64-12 digitizer \citep{7180719}. \\
+  Starburst        & 2016 & 5 GHz, single-baseline FX correlator, based on 4 ROACH2 boards with 8 ADC1x5000-8 digitizers \citep{Monroe, private comm}. \\
+  MAD              & 2013 & 16~MHz, 18-input FX correlator and beamforming system for low-frequency array prototyping for the SKA. Implemented using a single ROACH board with ADC64x64-12 digitizer \citep{Pupillo2015, RDS:RDS20336}. \\
+  PAPER            & 2010 & 100~MHz FX correlator originally based on iBOBs, and later upgraded to ROACH, and then ROACH2 boards. Current correlator has 256 inputs, and is based on a CASPER `F' stage using 8 ROACH2 boards followed by a GPU-based `X' stage \citep{2010AJ....139.1468P, 2014ApJ...788..106P, 2015ApJ...809...61A}. \\
+  HERA             & Development & 100~MHz bandwidth, 700-input FX correlator, constructed using $O(100)$ SNAP boards for digitization and channelization. `X' stage will be carried out either on GPU- or FPGA-based platforms, depending on availability and cost \citep{2016arXiv160607473D}. \\
+  AMiBA            & 2016 & Upgrade of the AmiBA wideband analog correlator. 7 dual-pol antenna 4.48~GHz bandwidth FX correlator, implemented on 7 ROACH2 boards with 14 ADC1x5000-8 digitizers \citep{amiba-adc, amiba-interim}. \\
+  LEDA             & 2012 & 58~MHz 512-input digitization, channelization and packetization system for a GPU correlator backend. Implemented using 16 ROACH2 boards with 32 ADC16x250-8 digitizers \citep{doi:10.1142/S2251171715500038}.\\
+  \hline
+\end{tabular}
+\end{table}
+
 
 \subsection{MeerKAT}
 
@@ -390,13 +434,77 @@ are regularly merged into the main library.
 
 \subsubsection{High Speed Memories} \label{sec: HSM}
 
-%% HMC 
+%% HMC
 
 \subsection{Support of off-the-shelf hardware}
 
 \subsection{CPU/GPU programming/data-transport}
 
 \subsection{Design re-use}
+The \emph{time to science} metric is influenced by the ability to
+reuse designs.  Just as in the world of software reuse, reuse of
+firmware and instrument designs is critical to time-to-science.  The
+first use of CASPER in a common-user instrument (to my knowledge... -
+JMF) was in the Green Bank Ultimate Pulsar Processing
+Instrument~\cite{duplain2008}, which used the gateware libraries
+developed by the CASPER group during its inital NSF funded phase.
+These libraries were combined with custom firmware blocks and software
+to form GUPPI, a very successful instrument to this day.  GUPPI was
+built in only about 18 months from the start of the project until
+first light observations were recorded.  The machine's hardware
+consists of exclusively off-the-shelf CASPER hardware and commodity
+computer systems.  In addition to the ease of building the instrument
+in the first place, there have been two exact copies made of the
+system.  One copy was used locally in Green Bank to process signals
+from the retired 140 ft telescope, and a second copy was installed as
+the primary pulsar machine at the Arecibo Observatory.  Both of these
+machines were installed with no engineering effort, and a modest
+effort from the computer system administrators and pulsar scientists.
+\emph{In the past, these clonings would have been much more time and
+  labor-intensive, hence more expensive.}
+
+The next generation of designs to be created in Green Bank from CASPER
+were all based on the ROACH family of configurable signal processors.
+As noted in Table~\ref{tab:xxx}, several ROACH-1 based spectrometers
+are deployed in Green Bank performing various functions for PI based
+science~\cite{ellingson, ghigo/heatherly,...}.  These all use common
+hardware and firmware, and a great deal of the software for processing
+and analyzing the output is common as well.  None of the PI based
+science would have been feasible without the ease of reuse of the
+ROACH designs.
+
+In 2013(?), the NSF funded an effort by UC Berkeley in conjunction
+with Green Bank to design the next generation spectrometer for the
+GBT.  The new spectrometer was designed to process the data from the
+small focal plan array receivers being constructed for the GBT, namely
+the 7 pixel (dual-pol) K-band receiver, and a 16 pixel (single-pol)
+W-band receiver.  The resulting VEGAS
+spectrometer~\cite{chennamengalam} was built with reused GUPPI
+software, reused CASPER gateware libraries, and new custom gateware
+blocks that were subsequently added to the CASPER libraries for others
+to use.  Calibration algorithms for the ADCs was gleaned from other
+CASPER users~\cite{Jack and Rurik}.  Hardware for interfacing the
+spectrometer to the telescope was designed by NRAO and is available to
+the community.  The entire VEGAS spectrometer has been cloned and
+enhanced as well, and has been deployed at telescopes in China as well
+as in other spectrometers in Green Bank.  The enhancements from these
+other deployments were then retrofitted to the original VEGAS system,
+enhancing its abilities.
+
+Meanwhile, a frequency-multiplexing system for reading out kinetinc
+inductance detectors was produced using the ROACH systems for the
+ARCONS project.  This system was adapted for the MUSTANG project which
+provided a large-format bolometer array detector for the GBT.  The
+ARCONS firmware was modified and repurposed for MUSTANG using the same
+hardware platforms. 
+
+Others?  EHT? VLBI?
+
+Design reuse has been a driving force behind the CASPER collaboration.
+Hardware, software, and firmware reuse all play into the theme of
+reducing \emph{time-to-science}.  As a happy coincidence, reducing
+time-to-science also reduces cost in many cases.
+
 
 \subsection{Observatory Integration}
 
@@ -409,4 +517,4 @@ are regularly merged into the main library.
 \bibliography{casper-2016}
 
 
-\end{document} 
+\end{document}
