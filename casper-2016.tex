@@ -199,16 +199,19 @@ JASPER tool-flow. The SNAP hardware is presented in Figure~\ref{fig:snap_hw}.
 
 \subsection{ADCs \& DACs}
 
-% TODO: ADC/DAC text
-% mainly focused on ADCs to digitize the signal after conditioning with the
-% analogue front ends
-% ADCs: various inputs, bitwidths, sampling rates, configurability
-% DACs: used for signal generation and converting back to analogue
 A number of high-speed, analogue interface boards have been developed to work
-with the low-voltage, differential signaling (LVDS) Z-DOK inerface.
+with the low-voltage, differential signaling (LVDS) Z-DOK interface, see Table
+\ref{table:adcs_dacs}. The majority of these interface boards are analogue to
+digital converters (ADCs) used to digitize the receiver signals. The extant ADCs
+cover a broad range of instrument requirements typical in radio
+astronomy. For example, the iADC is a two input, 8-bit dynamic range, 1000 Msps
+digitiziter. The typical naming convention is ADC[number of inputs]x[sample
+rate]-[bit width]. In addition to the ADCs a digital to analogue converter (DAC)
+has been developed which has two 16-bit dynamic range, 1000 Msps outputs.
 
 % NOTE: I just took the list from the website, are there others, are these all legit? (Griffin)
 \begin{tabular}{lccccc}
+\label{table:adcs_dacs}
 Name & Type & Bits & Sample Rate & Inputs/Outputs & Interface \\
 \hline
 ADC2x1000-8 (iADC) & ADC & 8 & 1 GSPS & 2 & Z-DOK \\
@@ -261,7 +264,6 @@ The current release of the JASPER tool flow actually includes the castro python 
 %% Andrew Martens + anyone else keen to contribute
 
 % NOTE: First draft of section, please feel free to edit (Griffin)
-% TODO: add CBASS-south, AVN Ghana to instrument list
 
 In order to quickly and easily develop new radio astronomy instruments a number
 of DSP blocks have been developed for use in CASPER board firmware. Typical
@@ -357,6 +359,8 @@ are regularly merged into the main library.
 
 \section{CASPER Deployments} \label{sec:Deployments}
 
+
+
 \begin{table}
 \label{table:casper-instruments-spectrometers}
 \caption{Spectrometers and packetizers powered by CASPER hardware.}
@@ -436,7 +440,15 @@ are regularly merged into the main library.
 
 \subsection{MeerKAT}
 
-%% I have asked Ruby van Rooyen, she said she will be able to provide (Griffin)
+% Text from Ruby van Rooyen, editted by Griffin
+Current development of CASPER hardware and libraries is driven in a large part
+by the development of the MeerKAT array by SKA South Africa. The MeerKAT array,
+once completed, will be one of the most advanced radio telescopes in operation
+and it scheduled to be a key component of the SKA-Mid array. Currently, the 16
+element, array release 1 (AR-1) system is a ROACH2 based packetized correlator
+and beamformer system. Development of the SKARAB board has been driven by the
+requirements of the full 64 element system which as of this writing is in the
+process of being rolled out. 
 
 \section{Future Directions \& Challenges} \label{sec:Future}
 
