@@ -207,7 +207,9 @@ cover a broad range of instrument requirements typical in radio
 astronomy. For example, the iADC is a two input, 8-bit dynamic range, 1000 Msps
 digitiziter. The typical naming convention is ADC[number of inputs]x[sample
 rate]-[bit width]. In addition to the ADCs a digital to analogue converter (DAC)
-has been developed which has two 16-bit dynamic range, 1000 Msps outputs.
+has been developed which has two 16-bit dynamic range, 1000 Msps outputs. For
+each analogue interface board a `yellow block' is included in the DSP library,
+see Section \ref{sec:dsp-libraries}.
 
 % NOTE: I just took the list from the website, are there others, are these all legit? (Griffin)
 \begin{tabular}{lccccc}
@@ -260,6 +262,7 @@ The current release of the JASPER tool flow actually includes the castro python 
 %% Adam Isaacson / Jack Hickish
 
 \subsection{CASPER DSP Libraries}
+\label{sec:dsp-libraries}
 
 %% Andrew Martens + anyone else keen to contribute
 
@@ -340,8 +343,8 @@ often used in unison with a 4-bit quantizer block to reduce the signal bitwidth
 before correlation.
 
 In addition to the generic DSP blocks a number of external interfaces known as
-'yellow blocks' have been designed to interface with external hardware such as
-ADCs, DACs, software interface registers, QDR  and DRAM memory, and network
+`yellow blocks' have been designed to interface with external hardware such as
+ADCs, DACs, software interface registers, QDR and DRAM memory, and network
 interfaces. Each yellow block has been developed for a specific external module.
 With in the Simulink environment a yellow block acts as a place holder for an
 external interface. During the synthesis toolflow the appropriate HDL for the
