@@ -12,7 +12,7 @@
 \documentclass{ws-jai}
 %\usepackage[flushleft]{threeparttable}
 %\usepackage{pdflscape}
-%\usepackage{longtable}
+\usepackage{longtable}
 %\usepackage{caption}
 \usepackage{subcaption}
 %\usepackage{subfig}
@@ -546,11 +546,7 @@ are regularly merged into the main library.
 Tables \ref{table:casper-instruments-spectrometers}, \ref{table:casper-instruments-mkid} and \ref{table:casper-instruments-correlators} list, respectively, spectrometers, MKID readouts, and correlators/beamformers built on CASPER technologies.
 These instruments include those delivering groundbreaking science such as the Event Horizon Telescope \citep{Johnson1242}, ..., ...
 
-\begin{table}
-\caption{Spectrometers and packetizers powered by CASPER hardware.}
-\label{table:casper-instruments-spectrometers}
-\centering
-\begin{tabular}{ccp{10cm}}
+\begin{longtable}{ccp{10cm}}
   Instrument & Year & Description \\
   \hline
   Leuschner Spectrometer & 2015 & Dual-polarization, 12 MHz, 8192 channel spectrometer for UC Berkeley's Leuschner Radio Observatory. Based on ROACH1 and ADC2x1000-8\footnote{\url{https://github.com/domagalski/leuschner-spectrometer}} \\
@@ -572,15 +568,12 @@ These instruments include those delivering groundbreaking science such as the Ev
   CASPSR           & 2009 & 400~MHz bandwith packetizer for GPU-based pulsar processing backend at the Parkes telescope. Originally implemented with an iBOB. Later upgraded to a ROACH board with ADC2x1000-8 digitizer\footnote{\url{https://astronomy.swin.edu.au/pulsar/?topic=caspsr}} \\
   Fly's Eye        & 2007 & High time-resolution spectrometer for the 42-dish Allen Telescope Array. Based on 11 iBOB boards with 22 ADC2x1000-8 digitizers \citep{flyseye} \\
   SERENDIP        & 2009+ & 200~MHz spectrometer with 1.5~Hz resolution, fed from the Arecibo L-band Feed Array. SERENDIP V.v was deployed in 2009 \citep{seti} and was implemented with an iBOB and BEE2. The latest generation, SERENDIP VI, uses a single ROACH2 and ADC1x5000-8 digitizer to process >1~GHz bandwidth. SERENDIP VI has been deployed at both the Green Bank and Arecibo Observatories. \\
-\end{tabular}
-\end{table}
+  \caption{Spectrometers and packetizers powered by CASPER hardware.}
+  \label{table:casper-instruments-spectrometers}
+\end{longtable}
 
 
-\begin{table}
-\caption{MKID readout systems powered by CASPER hardware.}
-\label{table:casper-instruments-mkid}
-\centering
-\begin{tabular}{ccp{10cm}}
+\begin{longtable}{ccp{10cm}}
   Instrument & Year & Description \\
   \hline
   BLAST-TNG        & 2017 &  2.5~m Balloon-Borne Submillimeter Polarimeter with CASPER MKID readout system. BAsed on 5 ROACH2 boards with MUSIC-DAC/ADC cards \citep{galitzki2014balloon}. \\
@@ -591,14 +584,11 @@ These instruments include those delivering groundbreaking science such as the Ev
   ARCONS           & 2011 & 250-pixel MKID readout system with 500~MHz bandwidth between 3.5-5.5~GHz. Implemented using 8 ROACH boards with MUSIC ADC/DAC cards \citep{10.1086/674013}. \\
   DARKNESS         & 2016 & 10,000 MKID pixel readout system with 2~GHz bandwidth between 4-8~GHz. Implemented with 10 ROACH2 boards and custom ADC/DAC/IF cards \citep{in prep}. \\
   MEC              & 2017 & Expansion of DARKNESS system to accommodate 20,000 pixel readout, using 20 ROACH2 boards with custom ADC/DAC/IF cards \citep{in prep}. \\
-\end{tabular}
-\end{table}
+  \caption{MKID readout systems powered by CASPER hardware.}
+  \label{table:casper-instruments-mkid}
+\end{longtable}
 
-\begin{table}
-\caption{Correlators and beamformers using CASPER hardware for either their `F', `X' or beamforming stages.}
-\label{table:casper-instruments-correlators}
-\centering
-\begin{tabular}{ccp{10cm}}
+\begin{longtable}{ccp{10cm}}
   Instrument & Year & Description \\
   \hline
   ARI              & 2012 & 21-cm dual-antenna interferometer for teaching purposes. Based on a single ROACH and ADC2x1000-8 \citep{MScSalas2014}. \\
@@ -618,9 +608,9 @@ These instruments include those delivering groundbreaking science such as the Ev
   HERA             & Development & 100~MHz bandwidth, 700-input FX correlator, constructed using $O(100)$ SNAP boards for digitization and channelization. `X' stage will be carried out either on GPU- or FPGA-based platforms, depending on availability and cost \citep{2016arXiv160607473D}. \\
   AMiBA            & 2016 & Upgrade of the AmiBA wideband analog correlator. 7 dual-pol antenna 4.48~GHz bandwidth FX correlator, implemented on 7 ROACH2 boards with 14 ADC1x5000-8 digitizers \citep{amiba-adc, amiba-interim}. \\
   LEDA             & 2012 & 58~MHz 512-input digitization, channelization and packetization system for a GPU correlator backend. Implemented using 16 ROACH2 boards with 32 ADC16x250-8 digitizers \citep{doi:10.1142/S2251171715500038}.\\
-  \hline
-\end{tabular}
-\end{table}
+  \caption{Correlators and beamformers using CASPER hardware for either their `F', `X' or beamforming stages.}
+  \label{table:casper-instruments-correlators}
+\end{longtable}
 
 
 \section{Future Directions \& Challenges} \label{sec:Future}
