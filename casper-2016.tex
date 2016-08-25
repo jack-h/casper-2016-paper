@@ -29,12 +29,12 @@ Research in 2016}
 
 %\author{First Author$^\dagger$, Second Author$^\ddagger$, Third
 %Author$^\ddagger$ and Fourth Author$^\S$}
-\author{Jack Hickish$^\dagger$, Jason Manley$^\ddagger$, Wesley New$^\ddagger$, Griffin Foster$^\ddagger$, Adam Isaacson$^\ddagger$, Others$^\S$}
+\author{Jack Hickish$^\dagger$, Jason Manley$^\ddagger$, Wesley New$^\ddagger$, Griffin Foster$^\ddagger$, Adam Isaacson$^\ddagger$}
 
 \address{
 $^\dagger$Radio Astronomy Laboratory, UC Berkeley, Berkeley, CA 94720, USA, jackh@astro.berkeley.edu\\
 $^\ddagger$SKA-SA, 3rd Floor, The Park, Park Road, Pinelands, Cape Town, 7405, South Africa
-$^\S$Group, Company, Address, City, State ZIP/Zone, Country, fauthor@company.com
+%$^\S$Group, Company, Address, City, State ZIP/Zone, Country, fauthor@company.com
 }
 
 \maketitle
@@ -555,7 +555,7 @@ These instruments include those delivering groundbreaking science such as the Ev
   Fly's Eye        & 2007 & High time-resolution spectrometer for the 42-dish Allen Telescope Array. Based on 11 iBOB boards with 22 ADC2x1000-8 digitizers \citep{flyseye} \\
   GUPPI            & 2009 & Pulsar processor with the Green Bank Telescope. Provides full stokes polarimetry and ethernet packetizing with up to 800 MHz BW. Based on a pair of iBOB boards with ADC2x1000-8 digitizers and a BEE2 \citep{guppi}. \\
   CASPSR           & 2009 & 400~MHz bandwith packetizer for GPU-based pulsar processing backend at the Parkes telescope. Originally implemented with an iBOB. Later upgraded to a ROACH board with ADC2x1000-8 digitizer\footnote{\url{https://astronomy.swin.edu.au/pulsar/?topic=caspsr}} \\
-  BPSR             & 2009 & 400~MHz bandwidth, 13-beam fast-dump spectrometer for the Parkes multibeam receiver. Originally implemented with iBOBs. Upgraded in 2012 to use 13 ROACH boards \citep{2010MNRAS.409..619K}. \\
+  BPSR             & 2009 & 400~MHz bandwidth, 13-beam fast-dump spectrometer for the Parkes multibeam receiver. Originally implemented with iBOBs. Upgraded in 2012 to use 13 ROACH boards \citep{mcmahon-thesis, 2010MNRAS.409..619K}. \\
   GAVRT            & 2009-2012 & 8~GHz instantaneous bandwidth transient capture buffer with real-time incoherent dedispersion trigger. Implemented with 8 iBOBs, 16 ADC2x1000-8s and a BEE2 \citep{jon10, JonesDSS28}. \\
   SERENDIP V.v     & 2009+ & 200~MHz spectrometer with 1.5~Hz resolution, fed from the Arecibo L-band Feed Array. SERENDIP V.v was deployed in 2009 \citep{seti} and was implemented with an iBOB and BEE2. The latest generation, SERENDIP VI, uses a single ROACH2 and ADC1x5000-8 digitizer to process $>$1~GHz bandwidth. SERENDIP VI has been deployed at both the Green Bank and Arecibo Observatories. \\
   NUPPI            & 2011 & 512~MHz digitization and flexible (32-1024 channel) channeliser for pulsar observations. Implemented using a single ROACH board with ADC2x1000-8 digitizer \citep{2014MNRAS.443.3752L}. \\
@@ -598,6 +598,7 @@ These instruments include those delivering groundbreaking science such as the Ev
   \hline
   KAT7             & 2010 & 7 dual-pol antenna full-stokes FX correlator, based on 16 ROACH boards \citep{Foley01082016, man14}. \\
   PAPER            & 2010 & 100~MHz FX correlator originally based on iBOBs, and later upgraded to ROACH, and then ROACH2 boards. Current correlator has 256 inputs, and is based on a CASPER `F' stage using 8 ROACH2 boards followed by a GPU-based `X' stage \citep{2010AJ....139.1468P, 2014ApJ...788..106P, 2015ApJ...809...61A}. \\
+  ATA              & 2011 & 42 dual-pol antenna beamformer for SETI searches, capable of forming 3 beams with 100~MHz bandwidth. Implemented using 48 iBOBs with iADC digitizers and 15 BEE2 boards\citep{ata-beamformer}.\\
   LEDA             & 2012 & 58~MHz, 512-input digitization, channelization and packetization system for a GPU correlator backend. Implemented using 16 ROACH2 boards with 32 ADC16x250-8 digitizers \citep{doi:10.1142/S2251171715500038}.\\
   ARI              & 2012 & 21-cm dual-antenna interferometer for teaching purposes. Based on a single ROACH and ADC2x1000-8 \citep{MScSalas2014}. \\
   MAD              & 2013 & 16~MHz, 18-input FX correlator and beamforming system for low-frequency array prototyping for the SKA. Implemented using a single ROACH board with ADC64x64-12 digitizer \citep{Pupillo2015, RDS:RDS20336}. \\
@@ -615,6 +616,9 @@ These instruments include those delivering groundbreaking science such as the Ev
   MeerKAT          & Development & ``Facility Instrument'' capable of producing various data products over 856~MHz bandwidth. Modes include 32k channel, 64 dual-pol antenna correlator, beamformer and transient buffer. Currently based on ROACH2 boards, with a SKARAB upgrade forthcoming \citep{meerkat-req}. \\
   HERA             & Development & 100~MHz bandwidth, 700-input FX correlator, constructed using $O(100)$ SNAP boards for digitization and channelization. `X' stage will be carried out either on GPU- or FPGA-based platforms, depending on availability and cost \citep{2016arXiv160607473D}. \\
 \end{longtable}
+
+The wide range of instruments based on the work of the CASPER collaboration has yielded numerous scientific results. The VLBI and beamforming systems of the CARMA and SMA arrays were a key part of the Event Horizon Telescope \citep{eht1, eht2}. The GUPPI system deployed at the Robert C. Byrd Green Bank telescope was responsible for discovery of the two-solar-mass neutron star, J1614-2230 \citep{neutron-star}. The BPSR system deployed on the Parkes telescope powered the High Time Resolution Universe Pulsar Survey discovered a number of new pulsars and other radio transients \citep[for example]{keith2010high, bates2011high, pop-frbs}.
+The packetized correlator design pioneered by the CASPER group \citep{parsons2008scalable} has powered multiple generations of the Precision for Probing the Epoch of Reionization (PAPER) and continues to place field-leading constraints on reionization \citep{paper64a, paper64b}.
 
 
 \section{Future Directions \& Challenges} \label{sec:Future}
