@@ -24,8 +24,7 @@
 \markboth{Jack Hickish}{The Collaboration for Astronomy
 Signal Processing and Electronics Research in 2016.}
 
-\title{The Collaboration for Astronomy Signal Processing and Electronics
-Research: A decade of developing open-source radio-astronomy instruments}
+\title{A decade of developing radio-astronomy instruments using CASPER open-source technology}
 
 %\author{First Author$^\dagger$, Second Author$^\ddagger$, Third
 %Author$^\ddagger$ and Fourth Author$^\S$}
@@ -51,10 +50,10 @@ inserted by publisher)}; \accepted{(to be inserted by publisher)};
 The Collaboration for Astronomy Signal Processing and Electronics Research
 (CASPER) has been working for a decade to reduce the time and cost of
 designing, building and deploying new digital radio astronomy instruments.
-Today, CASPER-designed hardware powers over 45 scientific instruments
-worldwide, and are used by scientists and engineers at dozens of academic
+Today, CASPER open-source technology powers over 45 scientific instruments
+worldwide, and is used by scientists and engineers at dozens of academic
 institutions.  In this paper we catalog the current offerings of the CASPER
-collaboration, and instruments past and present which rely on CASPER technology.
+collaboration, and instruments past and present build by CASPER users and developers.
 We describe the ongoing state of software development, as CASPER looks to
 support a broader range of programming environments and hardware and ensure compatibility
 with the latest vendor tools.
@@ -609,7 +608,7 @@ Unlike other use-cases, MKID readout systems require DACs to generate output sig
 
 Numerous correlators and beamformers have been built on CASPER technologies (Table~\ref{table:casper-instruments-correlators}). In particular, CASPER developers have worked to provide and maintain firmware modules for all aspects of FX correlation systems \citep{parsons2008scalable}. CASPER hardware can also frequently found powering the channelization stage of a correlator, with cross-mulitplication powered by commodity GPU hardware. This heterogeneous architecture has proven very successful with large-$N$ arrays, where the high arithmetic density allows leveraging of the computational power of GPUs \citep{scalable-gpu-fpga, chime-correlator}.
 
-An example of an ultra-wideband CASPER digital backend using the canonical packetized correlator architecture alongside a phased-array VLBI recording system is the Submillimeter Array’s (SMA) “SMA Wideband Astronomical ROACH2 Machine” -- SWARM -- \citep{swarm}. SWARM has recently been deployed as the primary facility back end at the SMA, and integrates two instruments: a correlator with 140~kHz spectral resolution across its full 32~GHz band, used for connected interferometric observations; and a 64~Gb/s phased array VLBI recording system. SWARM is built with ROACH2 boards with highly-utilized Virtex 6 SX495T FPGAs running at 286 MHz. In addition to ROACH2 SWARM uses ADC1x5000 digitizers shared by CASPER which sample a 2.3 GHz Nyquist band.
+An example of an ultra-wideband CASPER digital backend using the canonical packetized correlator architecture alongside a phased-array VLBI recording system is SWARM, the SMA Wideband Astronomical ROACH2 Machine, recently commissioned at the Submillimeter Array (SMA). \citep{swarm}. SWARM has recently been deployed as the primary facility back end at the SMA, and integrates two instruments: a correlator with 140~kHz spectral resolution across its full 32~GHz band, used for connected interferometric observations; and a 64~Gb/s phased array VLBI recording system. SWARM is built with ROACH2 boards with highly-utilized Virtex 6 SX495T FPGAs running at 286 MHz. In addition to ROACH2 SWARM uses ADC1x5000 digitizers shared by CASPER which sample a 2.3 GHz Nyquist band.
 
 SWARM represents the widest bandwidth CASPER correlator currently deployed. In replacing the SMA's previous ASIC-based correlator, it has reduced power consumption by an order of magnitude. The work of the SWARM team, particularly in charaterizing the ADC1x5000 \citep{adc5g} and integrating its interface into the CASPER toolflow, has been leveraged by several projects, including the STARBURST, VEGAS and AMI digital backends (see Tables \ref{table:casper-instruments-correlators} and {table:casper-instruments-spectrometers}).
 
