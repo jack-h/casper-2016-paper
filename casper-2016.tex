@@ -51,7 +51,7 @@ inserted by publisher)}; \accepted{(to be inserted by publisher)};
 The Collaboration for Astronomy Signal Processing and Electronics Research
 (CASPER) has been working for a decade to reduce the time and cost of
 designing, building and deploying new digital radio astronomy instruments.
-Today, CASPER-designed hardware powers over 50 scientific instruments
+Today, CASPER-designed hardware powers over 45 scientific instruments
 worldwide, and are used by scientists and engineers at dozens of academic
 institutions.  In this paper we catalog the current offerings of the CASPER
 collaboration, and instruments past and present which rely on CASPER technology.
@@ -83,7 +83,7 @@ minimize time-to-science by developing and supporting open-source,
 general-purpose hardware, software libraries and programming tools which allow
 rapid instrument design, straightforward upgrade cycles and reduced engineering time and cost.
 
-CASPER hardware and software now powers over 50 radio astronomy
+CASPER hardware and software now powers over 45 radio astronomy
 instruments worldwide (see Tables~\ref{table:casper-instruments-spectrometers},
 \ref{table:casper-instruments-mkids},
 \ref{table:casper-instruments-correlators}) including some of the largest, most
@@ -187,7 +187,7 @@ Though CASPER has championed the use of multicast switches for many years, only 
 
 \begin{figure}[htb]
  \centering
- \includegraphics[width=0.8\textwidth]{./ethernet-instrument.pdf}
+ \includegraphics[width=0.8\textwidth]{./figures/ethernet-instrument.pdf}
  % ethernet-instrument.pdf: 792x612 pixel, 72dpi, 27.94x21.59 cm, bb=0 0 792 612
  \caption{The canonical CASPER architecture. $N$ antennas are digitized and channelized into $M$ sub-bands using $N$ processors. These sub-bands are processed by $L$ correlation or beamforming nodes. Other users can subscribe to data streams and simultaneously implement, for example, high-resolution spectrometers or other features.}
  \label{fig:ethernet-instrument}
@@ -311,8 +311,8 @@ ADC4x250-8 (QuADC) & ADC     & 8     & 4      & 250          & Z-DOK \\
 ADC2x550-12        & ADC     & 12    & 2      & 550          & Z-DOK \\
 ADC2x400-14        & ADC     & 14    & 2      & 400          & Z-DOK \\
 KatADC             & ADC     & 8     & 1/2    & 3000/1500    & Z-DOK \\
-ADC1x5000-8        & ADC     & 8     & 1/2    & 5000/2500    & Z-DOK \\
-ADC16x250-8        & ADC     & 8     & 4/8/16 & 1000/500/250 & Z-DOK \\
+ADC1x5000-8 \citep{2014PASP..126..761J}       & ADC     & 8     & 1/2    & 5000/2500    & Z-DOK \\
+ADC16x250-8 \citep{adc10g}                    & ADC     & 8     & 4/8/16 & 1000/500/250 & Z-DOK \\
 ADC1x10000-4       & ADC     & 4     & 1      & 10000        & Z-DOK \\
 DAC2x1000-16       & DAC     & 16    & 2      & 1000         & Z-DOK \\
 MUSIC              & ADC/DAC & 12/16 & 2/2    & 550/1000     & dual Z-DOK \\
@@ -343,14 +343,14 @@ SKARAB boards have recently been made available to the general community, with t
 \centering
 \begin{subfigure}[t]{0.5\textwidth}
   \centering
-  \includegraphics[height=2.7in]{skarab_hw}
+  \includegraphics[height=2.7in]{./figures/skarab_hw}
   \caption{The SKARAB platform is a modular processing platform based around a Xilinx Virtex 7 FPGA with expandible mezzanine slots for memory and Ethernet ports.}
   \label{fig:skarab_hw}
 \end{subfigure}%
 ~
 \begin{subfigure}[t]{0.5\textwidth}
   \centering
-  \includegraphics[height=2.7in]{snap-annotated-crop.pdf}
+  \includegraphics[height=2.7in]{./figures/snap-annotated-crop.pdf}
   \caption{The SNAP platform, developed for the HERA array, is a low-cost platform based around a Xilinx Kintex-7 FPGA. It features on-board ADCs and target applications requiring digitization, channelization and packetization of RF signals.}
   \label{fig:snap_hw}
 \end{subfigure}
@@ -450,12 +450,9 @@ Blocks for including dynamic delays in beamformer and correlator systems have
 been implemented. A configurable 'coarse' delay can be applied before the FFT
 operation, while a 'fine' delay can be applied post-FFT with a phase correction.
 These delays can be combined with a software interface to act as a fringe
-tracking module.
+tracking module. Modules designed to enable debugging of correlators at runtime,
+such as parameterized noise generation blocks \citep{noisegen}, have also been developed.
 
-Similarly to the fine delay module, a gain equalizer module is implemented to
-dynamically update complex gain coefficients which are applied post-FFT. This is
-often used in unison with a 4-bit quantizer block to reduce the signal bitwidth
-before correlation.
 
 In addition to the generic DSP blocks, a number of external interfaces known as
 'yellow blocks' have been designed to interface with external hardware such as
@@ -463,7 +460,7 @@ ADCs, DACs, software interface registers, QDR  and DRAM memory, and network
 interfaces. Each yellow block has been developed for a specific external module.
 Within the Simulink environment a yellow block acts as a place holder for an
 external interface. During the synthesis toolflow the appropriate HDL for the
-external module is included into the design.
+external module is included into the design. The toolflow is designed such that designs using these yellow blocks are easily portable between FPGA hardware generations.
 
 The main collaboration library is hosted on
 github\footnote{github.com/casper-astro/mlib\_devel} with a number of
@@ -483,7 +480,7 @@ The CASPER software complements the toolflow environment, and allows the user to
 \centering
 \begin{subfigure}[t]{0.63\textwidth}
   \centering
-  \includegraphics[height=2.7in]{simulink.png}
+  \includegraphics[height=2.7in]{./figures/simulink.png}
   \caption{The Simulink environment provides blocks to interface to external hardware such as memories and ADCs. Special blocks also allow users to interact with a running FPGA design using standard CASPER software libraries.}
   \label{fig:simulink}
 \end{subfigure}%
@@ -491,7 +488,7 @@ The CASPER software complements the toolflow environment, and allows the user to
 \begin{subfigure}[t]{0.37\textwidth}
   \centering
   %\includegraphics[height=2in]{some_python_in_an_image.png}
-  \includegraphics[width=\textwidth]{some_python_in_an_image.png}
+  \includegraphics[width=\textwidth]{./figures/some_python_in_an_image.png}
   \caption{Example code to interact with a running FPGA design using the \emph{corr} Python package (hosted at https://github.com/ska-sa/corr).}
   \label{fig:sw}
 \end{subfigure}
@@ -503,6 +500,8 @@ The CASPER software complements the toolflow environment, and allows the user to
 \section{CASPER Deployments} \label{sec:Deployments}
 
 CASPER hardware has been extensively used in a variety of astronomical instruments. Here we give a summary of known deployed systems based on CASPER FPGA, ADC, and DAC hardware. In many cases, CASPER hardware has been used to complement commodity CPU and GPU hardware processing resources - the ease with which these systems can be mated is a key advantage of the Ethernet interconnect advocated by CASPER.
+
+CASPER hardware has also gained some traction outside of Radio Astronomy. For example, the Manastash Ridge Radar has adopted the CASPER ROACH boards and toolflow to create a frequency-agile, high bandwidth passive radar system for detection of aerospace and geoscience targets \cite{vertatschitsch_2013}.  Fast sampling allows the system to digitally select illuminators of opportunity such as GPS, HDTV, or FM radio, and the high aggregate bandwidth out of the 10 GbE ports allows for simultaneous reception of these signals from a single RF front end. Other know uses include DNA alignment searching \citep{roach-blast} and wireless neural sensor readout \citep{implants}.
 
 \subsection{Spectrometers}
 
@@ -518,7 +517,7 @@ may be simultaneously processed with the VEGAS spectrometer.
 
 \begin{figure}[htb]
  \centering
- \includegraphics[angle=270,origin=c, width=\textwidth]{./vegas-block.pdf}
+ \includegraphics[angle=270,origin=c, width=\textwidth]{./figures/vegas-block.pdf}
  % ethernet-instrument.pdf: 792x612 pixel, 72dpi, 27.94x21.59 cm, bb=0 0 792 612
  \caption{A block diagram of the heterogeneous VEGAS system, which digitizes signals using CASPER ADC and FPGA hardware.}
  \label{fig:vegas}
@@ -580,7 +579,7 @@ Groups deploying Microwave Kinetic Inductance Detector (MKID) systems, which use
 
 \begin{figure}[htb]
  \centering
- \includegraphics[angle=90,origin=c, width=0.5\textwidth]{./music-adc.jpg}
+ \includegraphics[angle=90,origin=c, width=0.5\textwidth]{./figures/music-adc.jpg}
  % ethernet-instrument.pdf: 792x612 pixel, 72dpi, 27.94x21.59 cm, bb=0 0 792 612
  \caption{The MUSIC DAC/ADC board, designed to interface with ROACH hardware to provide MKID readout capability.}
  \label{fig:music-adc}
@@ -639,6 +638,7 @@ SWARM represents the widest bandwidth CASPER correlator currently deployed. In r
   BIRALES          & 2016 & 14~MHz bandwidth, 32-input digitization and channelisation system for software beamformer. Implemented using a single ROACH board with ADC64x64-12 digitizer \citep{7180719}. \\
   Starburst        & 2016 & 5 GHz, single-baseline FX correlator, based on 4 ROACH2 boards with 8 ADC1x5000-8 digitizers\footnote{See \url{http://www.tauceti.caltech.edu/starburst/Home.html}}. \\
   AMiBA            & 2016 & Upgrade of the AmiBA wideband analog correlator. 7 dual-pol antenna 4.48~GHz bandwidth FX correlator, implemented on 7 ROACH2 boards with 14 ADC1x5000-8 digitizers \citep{amiba-adc, amiba-interim}. \\
+  EOVSA            & 2016 & Kurtosis spectrometer and FX correlator for the dual-polarization, 16-antenna Expanded Owens Valley Solar Array. Built using 8 ROACH2 boards each equipped with a pair of katADC digitizers \citep{eovsa}.\\
   SWARM            & 2016 & 32~GHz, 16-input correlator and beamformer for the Submillimeter Array. Implemented using 34 ROACH2 boards and 64 ADC1x5000-8 digitizers \citep{swarm}. \\
   MeerKAT          & Development & ``Facility Instrument'' capable of producing various data products over 856~MHz bandwidth. Modes include 32k channel, 64 dual-pol antenna correlator, beamformer and transient buffer. Currently based on ROACH2 boards, with a SKARAB upgrade forthcoming \citep{meerkat-req}. \\
   HERA             & Development & 100~MHz bandwidth, 700-input FX correlator, constructed using $O(100)$ SNAP boards for digitization and channelization. `X' stage will be carried out either on GPU- or FPGA-based platforms, depending on availability and cost \citep{2016arXiv160607473D}. \\
@@ -646,8 +646,18 @@ SWARM represents the widest bandwidth CASPER correlator currently deployed. In r
 
 \end{longtable}
 
-The wide range of instruments based on the work of the CASPER collaboration has yielded numerous scientific results. The high-speed R2DBE data recorder \citep{r2dbe} and beamforming systems of the CARMA and SMA arrays were a key part of the Event Horizon Telescope \citep{eht1, eht2}. The GUPPI system deployed at the Robert C. Byrd Green Bank telescope was responsible for discovery of the two-solar-mass neutron star, J1614-2230 \citep{neutron-star}, and continues to power pulsar observations at the GBT including the nanoGRAV pulsar timing project \citep{nanograv}. The BPSR system deployed on the Parkes telescope powered the High Time Resolution Universe Pulsar Survey discovered a number of new pulsars and other radio transients \citep[for example]{keith2010high, bates2011high, pop-frbs}, and has since been updated with the HIPSR instrument, also powered by CASPER hardware.
+\begin{figure}[ht]
+ \centering
+ \includegraphics[width=0.3\textwidth]{./figures/pulse_0033_8us_cleaned_up.png}
+ % ethernet-instrument.pdf: 792x612 pixel, 72dpi, 27.94x21.59 cm, bb=0 0 792 612
+ \caption{A giant pulse fom the Crab pulsar, captured with the GAVRT wideband recording system. The left panel shows the on-pulse spectrum, the center shows the spectrogram, and the right panels show the integrated pulse in each of 1 GHz band.}
+ \label{fig:crab-wide}
+\end{figure}
+
+The wide range of instruments based on the work of the CASPER collaboration has yielded numerous scientific results. The high-speed R2DBE data recorder \citep{r2dbe} and beamforming systems of the CARMA and SMA arrays are a key part of the Event Horizon Telescope \citep{eht1, eht2}. The GUPPI system deployed at the Robert C. Byrd Green Bank telescope was responsible for discovery of the two-solar-mass neutron star, J1614-2230 \citep{neutron-star}, and continues to power pulsar observations at the GBT including the nanoGRAV pulsar timing project \citep{nanograv}. The Deep Space Network's Goldstone Apple Valley Radio Telescope (GAVRT) has enabled impressive wideband observations using a CASPER backend \citep[Figure~\ref{fig:crab-wide}]{crab-wide}. The BPSR system deployed on the Parkes telescope powered the High Time Resolution Universe Pulsar Survey discovered a number of new pulsars and other radio transients \citep[for example]{keith2010high, bates2011high, pop-frbs}, and has since been updated with the HIPSR instrument, also powered by CASPER hardware.
 The packetized correlator design pioneered by the CASPER group \citep{parsons2008scalable} has powered multiple generations of the Precision for Probing the Epoch of Reionization (PAPER) and continues to place field-leading constraints on reionization \citep{paper64a, paper64b}.
+
+
 
 
 \section{Future Directions \& Challenges} \label{sec:Future}
@@ -671,7 +681,7 @@ Unfortunately, much of the DSP library development of the last decade is inextri
 Most importantly, the collaboration must be aware of the changing landscape of digital computation. Today instruments can be built with FPGAs which in the past would have demanded ASICs. It is already clear that in many scenarios GPUs are capable of filling roles where CASPER users have previously have required FPGAs. With this in mind, CASPER must apply its principles of modularity, flexiblity and reusablility to the ever-growing collection of software resources developed by the community.
 
 \section{Conclusions} \label{sec:Conclusions}
-Over the past decade over 500 CASPER FPGA-boards have been delivered to collaborators who have used them to build more than 50 instruments worldwide. These instruments have serve extraordinarily wide-ranging purposes - from single-board educational tools to peta-op-scale correlators to multi-functional facility instruments.
+Over the past decade over 500 CASPER FPGA-boards have been delivered to collaborators who have used them to build more than 45 instruments worldwide. These instruments have serve extraordinarily wide-ranging purposes - from single-board educational tools to peta-op-scale correlators to multi-functional facility instruments.
 
 The newest generations of CASPER hardware -- the SKARAB and SNAP platforms -- have catalysed the development of a new CASPER toolflow, distinct from the bee\_xps flow on which the collaboration has relied for over a decade. This new flow, JASPER, aims to lay the foundations for flexible support of multiple FPGA design tools, aleviating some of the limitations of the current MATLAB/Simulink environment while maintaining backwards compatibility with current designs.
 
