@@ -29,13 +29,16 @@ Signal Processing and Electronics Research in 2016.}
 %\author{First Author$^\dagger$, Second Author$^\ddagger$, Third
 %Author$^\ddagger$ and Fourth Author$^\S$}
 \author{Jack Hickish$^{1,\dagger}$,
+ Zuhra Abdurashidova$^1$,
+ Zaki Ali$^{10}$,
  Kaushal D. Buch$^5$,
- Hong Chen$^{10}$
+ Hong Chen$^{10}$,
  Matthew Dexter$^1$,
  Rachel Domagalski$^1$,
  John Ford $^{7,9}$
  Griffin Foster$^{2,4}$,
  Lincoln Greenhill$^8$,
+ Yashwant Gupta$^5$,
  Adam Isaacson$^2$,
  Homin Jiang$^3$,
  Glenn Jones$^8$,
@@ -47,6 +50,8 @@ Signal Processing and Electronics Research in 2016.}
  Andrew Martens$^2$,
  Randy McCullough$^7$,
  Wesley New$^2$,
+ Aaron Parsons$^2$,
+ Daniel C. Price$^{10}$
  Rurik Primiani$^6$,
  Jason Ray$^7$,
  Vereesé Van Tonder $^7$,
@@ -68,7 +73,7 @@ $^6$Harvard-Smithsonian Center for Astrophysics, 60 Garden Street, Cambridge, MA
 $^7$National Radio Astronomy Observatory, 166 Observatory Rd, Green Bank, WV 24944, USA \\
 $^8$Department of Physics, Columbia University, 550 W. 120th St. New York, NY 10027, USA \\
 $^9$Steward Observatory, University of Arizona, Tucson, AZ 85721, USA \\
-$^{10}$UC Berkeley, Berkeley, CA 94720, USA \\
+$^{10}$Department of Astronomy, UC Berkeley, Berkeley, CA 94720, USA \\
 $^{11}$Systems \& Technology Research, 600 West Cummings Park, Suite 6500, Woburn, MA 01801, USA \\
 }
 
@@ -591,7 +596,7 @@ now over 8 years old.
   cycSpec          & 2012 & Real-time cyclic spectrometer, deployed at Arecibo (ROACH) and GBT (ROACH2) on consecutive generations of hardware. Implements a filterbank of 128~MHz overlapping channels used to feed GPU processors \citep{cycspec}. \\
   C-BASS           & 2013 & C-Band All-Sky Survey, utilising antennas at the Owen's Valley Radio Observatory, CA, and South African MeerKAT site. C-BASS utilises ROACH and iADC hardware to implement a 4.5--5.5~GHz continuous comparison radiometer and polarimeter \citep{chuckles-thesis}.\\
   HIPSR            & 2014 & 400~MHz bandwidth 8192 channel spectrometer and high time-resolution system for the Parkes multibeam receiver. Based on 13 ROACH1 boards and 13 ADC2x1000-8 digitisers\footnote{\url{http://telegraphic.github.io/hipsr/overview.html}}. \\
-  GBTrans          & 2014 & Single board ROACH-based transient event spectrometer for the Green Bank 20m telescope, 500MHz BW, dual-polarised input, and 2048 channels \citep{gbtrans}. \\
+%  GBTrans          & 2014 & Single board ROACH-based transient event spectrometer for the Green Bank 20m telescope, 500MHz BW, dual-polarised input, and 2048 channels \citep{gbtrans}. \\ %No citation, couldn't even find a webpage
   KuPol            & 2014 & 6 GHz bandwidth full Stokes spectrometer, implemented with 12 ROACH boards and 24 ADC2x1000-8 digitisers \citep{2013arXiv1303.2131M}. \\
   VEGAS            & 2014 & Versatile spectrometer for the GBT, providing up to 10GHz BW for 1 dual-polarised input or 1.25GHz BW for 8x dual-polarised inputs. Features wideband modes and narrowband modes with 8 digitally tuned sub-bands within the 1.25GHz BW. Implemented using 8 ROACH2 boards with ADC1x5000-8 digitisers \citep{chennamangalam2014gpu}. \\
   ALMA Phasing Project& 2014 & 8 ROACH2 system for time-tagging, ethernet packetization and VDIF (VLBI) formatting \citep{2012evn..confE..53A}. \\
