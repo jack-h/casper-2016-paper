@@ -310,7 +310,7 @@ The bee\_xps flow, discussed more in Section~\ref{sec:toolflow} in the context o
 While CASPER advocates the use of a variety of hardware platforms, over the past decade the collaboration has focussed its efforts on designing FPGA-based hardware and ADC/DAC daughterboards\footnote{See \url{https://casper.berkeley.edu/wiki/Hardware}}. Originally utilising processing hardware developed at the Berkeley Wireless Research Center such as the Interconnect Break-out Board (iBOB) and Berkeley Emulation Engine 2 (BEE2, \citet{bee2}) the collaboration later began designing their own platforms to best meet the needs of the radio astronomy community. An overview of the hardware specs of the most recent five CASPER boards is given in Table~\ref{table:fpga-hardware}. A dozen different ADC and DAC add-on cards are available for these platforms (Table~\ref{table:adc-hardware}). A brief overview of available FPGA platforms, focussing on the latest-generation SKARAB and SNAP boards, is given below.
 
 \begin{table}[htb]
-\caption{A decade of CASPER hardware.}
+\caption{A decade of CASPER FPGA hardware.}
 \label{table:fpga-hardware}
 \centering
 \begin{tabular}{lccccc}
@@ -336,7 +336,8 @@ ADC/DAC support   & 2xZDOK   & 2xZDOK   & 2xZDOK      & 1xZDOK, 3xHMCAD1511 & 4x
 \label{table:adc-hardware}
 \centering
 \begin{tabular}{lccccc}
-Name & Type & Bits & Inputs/Outputs & Sample Rate (MS/s)& Interface \\
+Name               & Type    & Bits  & Analog   & Sample Rate & Interface \\
+                   &         &       & Channels & (MS/s)      & Interface \\
 \hline
 ADC2x1000-8 (iADC) & ADC     & 8     & 1/2    & 2000/1000    & Z-DOK \\
 ADC1x3000-8        & ADC     & 8     & 1      & 3000         & Z-DOK \\
