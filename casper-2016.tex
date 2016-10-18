@@ -561,8 +561,7 @@ may be simultaneously processed with the VEGAS spectrometer.
 
 \begin{figure}[htb]
  \centering
- \includegraphics[angle=270,origin=c, width=\textwidth]{./figures/vegas-block.pdf}
- % ethernet-instrument.pdf: 792x612 pixel, 72dpi, 27.94x21.59 cm, bb=0 0 792 612
+ \includegraphics[width=\textwidth]{./figures/vegas-block-90.pdf}
  \caption{A block diagram of the heterogeneous VEGAS system, which digitises signals using CASPER ADC and FPGA hardware.}
  \label{fig:vegas}
 \end{figure}
@@ -612,6 +611,7 @@ now over 8 years old.
   %Canberra DSN     & 2016 & 16~GHz single pol or 8~GHz dual-pol spectrometer. Implemented using 4 ROACH2 boards \citep{Kocz, in prep}. \\
   VGOS             & 2016 & The VLBI Global Observing System utilises 4 ROACH boards each with ADC2x1000-8 digitisers to implement a dual-polarization VLBI recording system. Ten such VGOS stations are being deployed worldwide \citep{2012ivs..conf....8H}.\\
   AVN-Ghana        & 2016 & Single dish observing mode for the African VLBI Network's Ghana antenna. A ROACH and katADC digitiser are used to implement a spectrometer with wideband (400~MHz, 0.39~MHz resolution) and narrowband (1.56~MHz, 381~Hz resolution) modes \citep{avn}.\\
+  COMAP            & Development & 4~GHz, 19-beam spectrometer, with digital sideband separation. Implemented using 38 ROACH2 boards\footnote{\url{http://www.astro.caltech.edu/CRAL/projects.html}}. \\
   \label{table:casper-instruments-spectrometers}
 \end{longtable}
 %\end{table}
@@ -644,7 +644,6 @@ Unlike other use-cases, MKID readout systems require DACs to generate output sig
   MEC              & 2017 & Expansion of DARKNESS system to accommodate 20,000 pixel readout, using 20 ROACH2 boards with custom ADC/DAC/IF cards \citep{meeker2015design}. \\
   BLAST-TNG        & 2017 &  2.5~m Balloon-Borne Submillimeter Polarimeter with CASPER MKID readout system. Based on 5 ROACH2 boards with MUSIC-DAC/ADC cards \citep{galitzki2014balloon}. \\
   HOLMES           & 2018 & Electron Neutrino Mass measurement experiment with CASPER-based microwave SQUID readout system, based on 35 ROACH2 boards with MUSIC-ADC/DAC cards \citep{Alpert2015, Ferri2016179}. \\
-  COMAP            & Development & 4~GHz, 19-pixel MKID readout system, implemented using 38 ROACH2 boards\footnote{\url{http://www.astro.caltech.edu/CRAL/projects.html}}. \\
   \label{table:casper-instruments-mkids}
 \end{longtable}
 
@@ -734,7 +733,7 @@ The flexible DSP libraries which have been vital in enabling the design re-use a
 The collaboration continues in its goal of reducing the cost of building radio-astronomy instruments, and in future looks to increase its efforts in developing and maintaining flexible software (CPU and GPU) resources to compliment existing FPGA infrastructure.
 
 \section{Acknowledgements}
-CASPER has been supported by the National Science Foundation grants 0243040,  0619596,  0906040,  1006509,  1106045, and 1407804. The collaboration gratefully acknowledges the donations of FPGA chips and design tools by Xilinx, via the Xilinx University Program.
+CASPER has been supported by National Science Foundation grants 0243040,  0619596,  0906040,  1006509,  1106045, and 1407804. The collaboration gratefully acknowledges the donations of FPGA chips and design tools by Xilinx, via the Xilinx University Program.
 
 
 \bibliographystyle{ws-jai}
