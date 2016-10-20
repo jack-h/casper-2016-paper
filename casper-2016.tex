@@ -509,7 +509,7 @@ In addition to the generic DSP blocks, a number of external interfaces known as
 `yellow blocks' have been designed to interact with hardware such as
 ADCs, DACs, software-accessible registers, QDR and DRAM memory, and network
 interfaces. 
-Within the Simulink environment a yellow block acts as a place holder for a low-level description of the interface firmware, which is included by the CASPER toolflow when a design is compiled. The toolflow is designed such that designs using these yellow blocks are easily portable between FPGA hardware generations.
+Within the Simulink environment a yellow block acts as a place holder for low-level interface firmware, which is included by the CASPER toolflow when a design is compiled. The toolflow is designed such that designs using these yellow blocks are easily portable between FPGA hardware generations.
 Among other abstractions, these yellow blocks and their associated software control scripts handle reliable data flow across asynchronous clock boundaries, allowing users to avoid one of the more difficult aspects of FPGA design.
 
 The main collaboration library is hosted on
