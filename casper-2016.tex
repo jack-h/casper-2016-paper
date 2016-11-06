@@ -14,7 +14,9 @@
 %\usepackage{pdflscape}
 \usepackage{longtable}
 %\usepackage{caption}
-\usepackage{subcaption}
+
+%\usepackage{subcaption}
+\usepackage{subfigure}
 %\usepackage{subfig}
 \def\btex{B{\sc IB}\TeX\ }
 \begin{document}
@@ -205,10 +207,10 @@ from only certain antennas (in the case of digitization and channelization) and
  processing data from only certain frequency channels (as is the case for
 correlation and beamforming) opens up the opportunity to utilize
 general-purpose computing modules, replicated as needed to meet the computational
-requirements of the instrument at hand. Where the parallelisation changes from
+requirements of the instrument at hand. Where the parallelization changes from
 per-antenna to per-frequency, a flexible, industry-standard interconnect
 solution such as Ethernet can be used to intelligently manage the
-data transpose (usually refered to as the \emph{corner turn}) between
+data transpose (usually referred to as the \emph{corner turn}) between
 processing modules.
 
 This is the architecture that underpins the CASPER philosophy: simple,
@@ -257,7 +259,7 @@ Generic, parameterized programming libraries are also provided, aiming to provid
 The CASPER collaboration currently has over 500 subscribers to its maillist, where users and developers share knowledge, instrument designs and troubleshooting advice. CASPER holds a yearly workshop usually with around 100 attendees, where users and developers may present their instrumentation work, as well as attend tutorial sessions. Groups thinking of deploying instruments based on CASPER hardware are keenly encouraged to visit experienced users who work at various academic institutions worldwide.
 The collaboration places a particular emphasis on encouraging students -- including those who may lack formal training in DSP and FPGA design -- to take on roles in instrument design projects.
 
-The collaboration also endeavours to maintain strong links with non-CASPER instrumentation groups, in order to minimize duplication of development efforts. 
+The collaboration also endeavors to maintain strong links with non-CASPER instrumentation groups, in order to minimize duplication of development efforts. 
 
 \subsection{Design re-use}
 The time-to-science metric of an experiment is strongly influenced by the ability to
@@ -321,7 +323,7 @@ The bee\_xps flow, discussed more in Section~\ref{sec:toolflow} in the context o
 
 \section{CASPER Hardware} \label{sec:Hardware}
 
-While CASPER advocates the use of a variety of hardware platforms, over the past decade the collaboration has focussed its efforts on designing FPGA-based hardware and ADC/DAC daughterboards\footnote{See \url{https://casper.berkeley.edu/wiki/Hardware}}. Originally utilizing processing hardware developed at the Berkeley Wireless Research Center such as the Interconnect Break-out Board (iBOB) and Berkeley Emulation Engine 2 (BEE2, \citet{bee2}) the collaboration later began designing their own platforms to best meet the needs of the radio-astronomy community. An overview of the hardware specifications of the most recent five CASPER boards is given in Table~\ref{table:fpga-hardware}. A dozen different ADC and DAC add-on cards are available for these platforms (Table~\ref{table:adc-hardware}). A brief overview of available FPGA platforms, focussing on the latest-generation SKARAB and SNAP boards, is given below.
+While CASPER advocates the use of a variety of hardware platforms, over the past decade the collaboration has focused its efforts on designing FPGA-based hardware and ADC/DAC daughter-boards\footnote{See \url{https://casper.berkeley.edu/wiki/Hardware}}. Originally utilizing processing hardware developed at the Berkeley Wireless Research Center such as the Interconnect Break-out Board (iBOB) and Berkeley Emulation Engine 2 (BEE2, \citet{bee2}) the collaboration later began designing their own platforms to best meet the needs of the radio-astronomy community. An overview of the hardware specifications of the most recent five CASPER boards is given in Table~\ref{table:fpga-hardware}. A dozen different ADC and DAC add-on cards are available for these platforms (Table~\ref{table:adc-hardware}). A brief overview of available FPGA platforms, focusing on the latest-generation SKARAB and SNAP boards, is given below.
 
 \begin{table}[htb]
 \caption{A decade of CASPER FPGA hardware.}
@@ -388,30 +390,18 @@ The SKARAB board does not include an on-board CPU, though provision has been mad
 % SKA-SA will be integrating 300 SKARAB units, as part of the MeerKAT upgrades, and should be ready for operation latest by the end of 2017.
 SKARAB boards have recently been made available to the general community, with the MeerKAT project planning to deploy 300 boards by the end of 2017. The SKARAB board is shown in Figure~\ref{fig:skarab_hw}.
 
-\begin{figure*}[t]
-\centering
-\begin{subfigure}[t]{0.5\textwidth}
+\begin{figure}
   \centering
-  \includegraphics[height=2.7in]{./figures/skarab_hw}
-  \caption{The SKARAB platform is a modular processing platform based around a Xilinx Virtex 7 FPGA with expandible mezzanine slots for memory and Ethernet ports.}
-  \label{fig:skarab_hw}
-\end{subfigure}%
-~
-\begin{subfigure}[t]{0.5\textwidth}
-  \centering
-  \includegraphics[height=2.7in]{./figures/snap-annotated-crop.pdf}
-  \caption{The SNAP platform, developed for the HERA array, is a low-cost platform based around a Xilinx Kintex-7 FPGA. It features on-board ADCs and target applications requiring digitization, channelization and packetization of RF signals.}
-  \label{fig:snap_hw}
-\end{subfigure}
-\caption{The latest two CASPER-supported boards. The SKARAB (a) and SNAP (b).}
-\label{fig:test}
-\end{figure*}
+  \subfigure[The SKARAB platform is a modular processing platform based around a Xilinx Virtex 7 FPGA with expandable mezzanine slots for memory and Ethernet ports.]{\includegraphics[height=2.6in]{./figures/skarab_hw}\label{fig:skarab_hw}} \hspace{1cm}
+  \subfigure[The SNAP platform, developed for the HERA array, is a low-cost platform based around a Xilinx Kintex-7 FPGA. It features on-board ADCs and target applications requiring digitization, channelization and packetization of RF signals.]{\includegraphics[height=2.6in]{./figures/snap-annotated-crop.pdf}\label{fig:snap_hw}} 
+   \caption{The latest two CASPER-supported boards. The SKARAB (a) and SNAP (b).} \label{fig:test}
+\end{figure}
+
 
 \paragraph*{SNAP}
 The Smart Network ADC Processor
 (SNAP\footnote{\url{https://casper.berkeley.edu/wiki/SNAP}}, Figure~\ref{fig:snap_hw}) is a lightweight, next generation
-FPGA platform designed primarily to perform digitization, channelization and packetization of analog signal in the Hydrogen Epoch of
-Reionization Array (HERA) experiment \citep{2016arXiv160607473D}. HERA requires digitization of around 700 signals at rates of 500~MS/s. In order to reduce cost and increase reliability, unlike previous CASPER platforms, the SNAP board features three onboard HMCAD1511 digitizer chips as well as an integrated synthesizer. Support for a single ZDOK interface is maintained to ensure compatibility with existing CASPER ADC daughter cards.
+FPGA platform designed primarily to perform digitization, channelization and packetization of analog signals in the Hydrogen Epoch of Reionization Array (HERA) experiment \citep{2016arXiv160607473D}. HERA requires digitization of around 700 signals at rates of 500~MS/s. In order to reduce cost and increase reliability, unlike previous CASPER platforms, the SNAP board features three on-board HMCAD1511 digitizer chips as well as an integrated synthesizer. Support for a single ZDOK interface is maintained to ensure compatibility with existing CASPER ADC daughter cards.
 As with other CASPER platforms, the SNAP board is designed to be used with the 10~Gb Ethernet protocol and features two SFP+ outputs. Though lacking features of the ROACH series, such as off-chip memory and on-board CPU, the SNAP represents a flexible platform on which to implement generic RF to Ethernet digitization schemes.
 The SNAP board will implement the same Microblaze-based control system as SKARAB, though users are also able to interface a CPU with the board using a simple 40-pin ribbon connector. The SNAP platform provides an interface designed to be compatible with the popular and widely available Raspberry Pi single board computer\footnote{\url{https://www.raspberrypi.org/}} which enables the SNAP to be used with software originally designed to target ROACH platforms.
 % Though only recently made available to the community at large, the SNAP board 
@@ -500,7 +490,7 @@ been implemented. A configurable `coarse' delay can be applied before the channe
 operation, while a `fine' delay can be applied post-channelization with a phase correction.
 These delays can be combined with a software interface to act as a fringe-tracking module. 
 
-Modules designed to enable debugging of instruments at runtime,
+Modules designed to enable debugging of instruments at run-time,
 such as parameterized noise generation blocks \citep{noisegen}, and blocks
 to capture snapshots of data, have also been developed.
 
@@ -524,26 +514,12 @@ Array Telescope Control Protocol
 client libraries supporting C Language\footnote{\url{https://github.com/ska-sa/katcp_devel}}, Python\footnote{\url{https://pypi.python.org/pypi/katcp}}, Ruby\footnote{\url{http://rb-katcp.rubyforge.org/}}, and LabView\footnote{\url{ftp://ftp.cv.nrao.edu/NRAO-staff/jcastro/CASPER/LabVIEW/}}.
 This CASPER software complements the toolflow environment, and allows the user to access software-accessible blocks with names and functions that can be configured using the intuitive graphical interface (Figure \ref{fig:toolflow}). 
 
-\begin{figure*}[t]
-\centering
-\begin{subfigure}[t]{0.63\textwidth}
+\begin{figure}
   \centering
-  \includegraphics[height=2.7in]{./figures/simulink.png}
-  \caption{The Simulink environment provides blocks to interface to external hardware such as memories and ADCs. Special blocks also allow users to interact with a running FPGA design using standard CASPER software libraries.}
-  \label{fig:simulink}
-\end{subfigure}%
-~
-\begin{subfigure}[t]{0.37\textwidth}
-  \centering
-  %\includegraphics[height=2in]{some_python_in_an_image.png}
-  \includegraphics[width=\textwidth]{./figures/some_python_in_an_image.png}
-  \caption{Example code to interact with a running FPGA design using the \emph{corr} Python package (hosted at https://github.com/ska-sa/corr).}
-  \label{fig:sw}
-\end{subfigure}
-\caption{The CASPER toolflow automatically manages memory elements in an FPGA design allowing users to write intuitive software to control and monitor firmware at runtime.}
-\label{fig:toolflow}
-\end{figure*}
-
+  \subfigure[The Simulink environment provides blocks to interface to external hardware such as memories and ADCs. Special blocks also allow users to interact with a running FPGA design using standard CASPER software libraries.]{\includegraphics[width=0.6\textwidth]{./figures/simulink.png}\label{fig:simulink}} \hfill
+  \subfigure[Example code to interact with a running FPGA design using the \emph{corr} Python package (hosted at https://github.com/ska-sa/corr).]{ \includegraphics[width=0.35\textwidth]{./figures/some_python_in_an_image.png}\label{fig:sw}}
+  \caption{The CASPER toolflow automatically manages memory elements in an FPGA design allowing users to write intuitive software to control and monitor firmware at runtime.} \label{fig:toolflow}
+\end{figure}
 
 \section{CASPER Deployments} \label{sec:Deployments}
 
@@ -659,7 +635,7 @@ Numerous correlators and beamformers have been built on CASPER technologies (Tab
 
 An example of an ultra-wideband CASPER digital backend using the canonical packetized correlator architecture alongside a phased-array VLBI recording system is SWARM, the SMA Wideband Astronomical ROACH2 Machine, recently commissioned at the Submillimeter Array (SMA). \citep{swarm}. SWARM has recently been deployed as the primary facility back-end at the SMA, and integrates two instruments: a correlator with 140~kHz spectral resolution across its full 32~GHz band, used for connected interferometric observations; and a 64~Gb/s phased array VLBI recording system. SWARM is built with ROACH2 boards with highly-utilized FPGAs running at 286 MHz. In addition to ROACH2 SWARM uses ADC1x5000 digitizers to sample a 2.3 GHz Nyquist band.
 
-SWARM represents the widest bandwidth CASPER correlator currently deployed. In replacing the SMA's previous ASIC-based correlator, it has reduced power consumption by an order of magnitude. The work of the SWARM team, particularly in charaterizing the ADC1x5000 \citep{adc5g} and integrating its interface into the CASPER toolflow, has been leveraged by several projects, including the STARBURST, VEGAS and AMI digital back-ends (see Tables \ref{table:casper-instruments-correlators} and \ref{table:casper-instruments-spectrometers}).
+SWARM represents the widest bandwidth CASPER correlator currently deployed. In replacing the SMA's previous ASIC-based correlator, it has reduced power consumption by an order of magnitude. The work of the SWARM team, particularly in characterizing the ADC1x5000 \citep{adc5g} and integrating its interface into the CASPER toolflow, has been leveraged by several projects, including the STARBURST, VEGAS and AMI digital back-ends (see Tables \ref{table:casper-instruments-correlators} and \ref{table:casper-instruments-spectrometers}).
 
 
 
@@ -724,7 +700,7 @@ The scale of adoption of CASPER hardware, tools, and architectures has been a gr
 
 The last of these issues should be alleviated with adoption of the JASPER flow. Though still in its infancy, its Python implementation is designed to have a much lower barrier to entry than the original MATLAB implementation. The new toolflow also aims to solve other issues associated with the MATLAB Simulink environment, by providing a route to utilizing other design entry front-ends.
 
-Unfortunately, much of the DSP library development of the last decade is inextricably tied into the Simulink design tool. Creating a set of libraries which are truly agnostic of the design environment is a key step in increasing the flexibility of the CASPER eccosystem. Such a library need not necessarily be developed from scratch, and CASPER is keen to leverage the wealth of DSP modules which exist both inside and outside the radio-astronomy community.
+Unfortunately, much of the DSP library development of the last decade is inextricably tied into the Simulink design tool. Creating a set of libraries which are truly agnostic of the design environment is a key step in increasing the flexibility of the CASPER ecosystem. Such a library need not necessarily be developed from scratch, and CASPER is keen to leverage the wealth of DSP modules which exist both inside and outside the radio-astronomy community.
 
 Most importantly, the collaboration must be aware of the changing landscape of digital computation. Today instruments can be built with FPGAs which in the past would have demanded ASICs. It is already clear that in many scenarios GPUs are capable of filling roles where CASPER users have previously required FPGAs. With this in mind, CASPER must apply its principles of modularity, flexiblity and reusablility to the ever-growing collection of software resources developed by the community.
 
@@ -737,7 +713,7 @@ The flexible DSP libraries which have been vital in enabling the design re-use a
 
 The collaboration continues in its goal of reducing the cost of building radio-astronomy instruments, and in future looks to increase its efforts in developing and maintaining flexible software (CPU and GPU) resources to compliment existing FPGA infrastructure.
 
-\section{Acknowledgements}
+\section{Acknowledgments}
 CASPER has been supported by National Science Foundation grants 0243040,  0619596,  0906040,  1006509,  1106045, and 1407804. The collaboration gratefully acknowledges the donations of FPGA chips and design tools by Xilinx, via the Xilinx University Program.
 
 
